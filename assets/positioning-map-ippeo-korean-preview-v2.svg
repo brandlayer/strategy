@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAF9F6"/>
+      <stop offset="1" stop-color="#F2F1EC"/>
+    </linearGradient>
+    <linearGradient id="quad" x1="680" y1="210" x2="1110" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F2FF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#E7F8EE" stop-opacity="0.95"/>
+    </linearGradient>
+    <style>
+      .kr { font-family: 'Noto Sans CJK KR','Noto Sans KR','NanumGothic','Malgun Gothic',sans-serif; }
+      .title { font-size:34px; font-weight:900; fill:#111; }
+      .sub { font-size:18px; font-weight:500; fill:#555; }
+      .axis { font-size:24px; font-weight:900; fill:#222; }
+      .tick { font-size:18px; font-weight:800; fill:#444; }
+      .boxT { font-size:20px; font-weight:900; fill:#111; }
+      .boxS { font-size:15px; font-weight:600; fill:#7c7c7c; }
+      .boxD { font-size:15px; font-weight:500; fill:#555; }
+      .legendT { font-size:17px; font-weight:900; fill:#222; }
+      .legendD { font-size:14px; font-weight:500; fill:#666; }
+      .foot { font-size:14px; font-weight:500; fill:#666; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="960" rx="28" fill="url(#bg)"/>
+  <rect x="70" y="52" width="1260" height="860" rx="28" fill="#FFFFFF" filter="url(#shadow)"/>
+
+  <text x="110" y="118" class="kr title">포지셔닝 맵: IPPEO와 실제 대안 서비스 비교</text>
+  <text x="110" y="152" class="kr sub">실제 시장 플레이어를 기준으로 보면, IPPEO는 우측 상단의 결정지원 + 전체 여정 연결 영역을 목표로 해야 합니다.</text>
+
+  <rect x="170" y="210" width="940" height="520" rx="20" fill="#FCFCFA" stroke="#DCDCD4"/>
+  <rect x="640" y="210" width="470" height="260" rx="20" fill="url(#quad)"/>
+
+  <g stroke="#E7E7E2" stroke-width="1">
+    <line x1="405" y1="210" x2="405" y2="730"/>
+    <line x1="640" y1="210" x2="640" y2="730"/>
+    <line x1="875" y1="210" x2="875" y2="730"/>
+    <line x1="170" y1="340" x2="1110" y2="340"/>
+    <line x1="170" y1="470" x2="1110" y2="470"/>
+    <line x1="170" y1="600" x2="1110" y2="600"/>
+  </g>
+
+  <g stroke="#111" stroke-width="3">
+    <line x1="170" y1="730" x2="1110" y2="730"/>
+    <line x1="170" y1="730" x2="170" y2="210"/>
+  </g>
+  <polygon points="1110,730 1088,718 1088,742" fill="#111"/>
+  <polygon points="170,210 158,232 182,232" fill="#111"/>
+
+  <text x="640" y="805" text-anchor="middle" class="kr axis">정보 제공 중심 → 결정지원 중심</text>
+  <text x="80" y="470" transform="rotate(-90 80 470)" text-anchor="middle" class="kr axis">단절형 여정 → 전체 여정 연결형</text>
+
+  <!-- separated ticks to avoid overlap -->
+  <text x="128" y="230" class="kr tick">높음</text>
+  <text x="128" y="732" class="kr tick">낮음</text>
+  <text x="170" y="770" class="kr tick">낮음</text>
+  <text x="1040" y="770" class="kr tick">높음</text>
+
+  <!-- 후기/검색 플랫폼 -->
+  <line x1="350" y1="580" x2="300" y2="620" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="350" cy="580" r="12" fill="#7A7A7A"/>
+  <rect x="170" y="606" width="300" height="110" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="192" y="637" class="kr boxT">강남언니 · 바비톡 · 트리뷰</text>
+  <text x="192" y="663" class="kr boxS">후기/검색 플랫폼</text>
+  <text x="192" y="689" class="kr boxD">비교 정보와 후기 탐색은 강하지만</text>
+  <text x="192" y="710" class="kr boxD">개인화된 결정지원은 제한적</text>
+
+  <!-- 병원 직접 채널 -->
+  <line x1="470" y1="620" x2="530" y2="668" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="470" cy="620" r="12" fill="#A88F6A"/>
+  <rect x="490" y="652" width="320" height="112" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="512" y="683" class="kr boxT">병원 홈페이지 · 인스타그램</text>
+  <text x="512" y="709" class="kr boxS">LINE / 카카오 직접 상담 채널</text>
+  <text x="512" y="735" class="kr boxD">직접 문의는 가능하지만</text>
+  <text x="512" y="756" class="kr boxD">비교·연결 구조는 약함</text>
+
+  <!-- 일본 에이전트 -->
+  <line x1="700" y1="480" x2="760" y2="420" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="700" cy="480" r="12" fill="#4C78A8"/>
+  <rect x="742" y="358" width="320" height="120" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="764" y="390" class="kr boxT">뷰티카사 등 일본 현지 에이전트</text>
+  <text x="764" y="416" class="kr boxS">에이전트 / 미용 컨시어지 서비스</text>
+  <text x="764" y="442" class="kr boxD">편의성은 높지만 중개형 구조라</text>
+  <text x="764" y="463" class="kr boxD">설명 전달과 주도권이 약해질 수 있음</text>
+
+  <!-- IPPEO -->
+  <line x1="920" y1="320" x2="1015" y2="250" stroke="#111" stroke-width="2.5"/>
+  <circle cx="920" cy="320" r="16" fill="#111"/>
+  <circle cx="920" cy="320" r="28" fill="none" stroke="#111" stroke-opacity="0.15" stroke-width="16"/>
+  <rect x="988" y="210" width="292" height="118" rx="20" fill="#111"/>
+  <text x="1012" y="246" class="kr" style="font-size:22px;font-weight:900;fill:#fff;">IPPEO</text>
+  <text x="1012" y="272" class="kr" style="font-size:15px;font-weight:500;fill:#D5D5D5;">의사 상담 기반 결정지원 플랫폼</text>
+  <text x="1012" y="296" class="kr" style="font-size:15px;font-weight:500;fill:#D5D5D5;">상담·예약·방문·귀국 후 연결 구조</text>
+
+  <rect x="1140" y="372" width="150" height="196" rx="18" fill="#FCFCFA" stroke="#DEDED7"/>
+  <text x="1162" y="407" class="kr legendT">IPPEO 영역</text>
+  <text x="1162" y="438" class="kr legendD">• 의사 판단 기반 결정</text>
+  <text x="1162" y="464" class="kr legendD">• 언어 지원</text>
+  <text x="1162" y="490" class="kr legendD">• 예약 연결성</text>
+  <text x="1162" y="516" class="kr legendD">• 귀국 후 연결</text>
+  <text x="1162" y="542" class="kr legendD">• 프리미엄 신뢰 신호</text>
+
+  <!-- footer caption box to avoid overlap -->
+  <rect x="150" y="846" width="560" height="38" rx="12" fill="#F5F4EF" stroke="#E3E2DB"/>
+  <text x="170" y="870" class="kr foot">X축: 정보 제공 중심에서 결정지원 중심 / Y축: 단절형 여정에서 전체 여정 연결형</text>
+</svg>

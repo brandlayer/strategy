@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>IPPEO 신규 포지셔닝 전략</title><meta name="description" content="이뻐 신규 포지셔닝 전략 웹 리포트"/><style>
+:root{--bg:#f7f7f4;--paper:#fff;--ink:#161616;--muted:#666;--line:#deded8;--soft:#f1f1ec;--accent:#111;--accent2:#8b6f47;--danger:#a23b3b;--ok:#2f6f50;--shadow:0 18px 50px rgba(0,0,0,.08);--radius:22px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;word-break:keep-all}.topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(247,247,244,.86);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:-.03em;font-size:18px}.navlinks{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.navlinks a{color:var(--muted);text-decoration:none}.navlinks a:hover{color:var(--ink)}.wrap{max-width:1180px;margin:0 auto;padding:0 22px}.hero{padding:76px 0 42px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.62);font-size:13px;color:var(--muted);margin-bottom:24px}h1{font-size:clamp(36px,5.4vw,72px);line-height:1.12;letter-spacing:-.065em;margin:0;max-width:1000px}h2{font-size:clamp(28px,3.4vw,45px);line-height:1.18;letter-spacing:-.055em;margin:0}.hero-sub{margin-top:26px;font-size:clamp(18px,2.1vw,25px);color:#333;max-width:920px;letter-spacing:-.035em}.hero-grid,.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.metric,.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}.metric{min-height:150px}.metric .num{font-size:42px;font-weight:900;letter-spacing:-.06em}.metric .label{font-size:16px;font-weight:800;margin-top:8px}.metric p,.card p{margin:8px 0 0;color:var(--muted);font-size:14px}.card h3{margin:0 0 12px;font-size:21px;line-height:1.32;letter-spacing:-.035em}section{padding:46px 0}.section-head{display:grid;grid-template-columns:220px 1fr;gap:26px;align-items:start;margin-bottom:24px}.section-no{font-size:13px;color:var(--muted);font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding-top:10px}.lead{font-size:18px;color:#333;max-width:880px;margin:18px 0 0}.tag{display:inline-block;padding:5px 10px;border-radius:999px;background:var(--soft);color:#444;font-size:12px;font-weight:800;margin-bottom:12px}.tag.dark{background:var(--accent);color:#fff}.tag.gold{background:#efe5d3;color:#6f5430}.quote{background:#111;color:#fff;border-radius:28px;padding:clamp(28px,5vw,56px);margin-top:28px;box-shadow:var(--shadow)}.quote p{font-size:clamp(24px,3vw,40px);line-height:1.3;margin:0;letter-spacing:-.055em;font-weight:800}.quote small{display:block;margin-top:18px;color:#bbb;font-size:15px}table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}th,td{padding:15px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}th{background:#111;color:#fff;font-weight:800}tr:last-child td{border-bottom:0}td strong{color:#111}.okbox{background:#f4fbf7;border:1px solid #d6eadf;color:#16442c;border-radius:20px;padding:24px;margin-top:20px}.warning{background:#fff7f7;border:1px solid #ecd2d2;color:#5d1d1d;border-radius:20px;padding:24px;margin-top:20px}footer{margin-top:48px;padding:40px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}body.locked{overflow:hidden}body.locked .topbar,body.locked main,body.locked footer{display:none!important}.password-gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 20% 20%,rgba(139,111,71,.14),transparent 34%),radial-gradient(circle at 80% 10%,rgba(0,0,0,.08),transparent 30%),var(--bg)}.password-card{width:min(460px,100%);background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:34px 30px 28px}.password-card h1{margin:0 0 10px;font-size:26px;line-height:1.32;letter-spacing:-.04em}.password-card p{margin:0 0 22px;color:var(--muted);font-size:15px}.password-form{display:flex;gap:10px;margin-top:10px}.password-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;font-size:17px;outline:none;background:#fff;color:var(--ink)}.password-form button{border:0;border-radius:14px;padding:0 18px;font-size:15px;font-weight:800;cursor:pointer;color:#fff;background:var(--accent);white-space:nowrap}.password-error{min-height:24px;margin-top:12px;font-size:14px;color:var(--danger);font-weight:700}@media(max-width:900px){.nav{align-items:flex-start;flex-direction:column}.navlinks{display:none}.hero-grid,.cards-3{grid-template-columns:1fr}.cards-2{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:8px}table{display:block;overflow-x:auto}th,td{min-width:150px}}
+</style></head><body class="locked">
+<section id="passwordGate" class="password-gate"><div class="password-card"><span class="eyebrow">CONFIDENTIAL</span><h1>IPPEO 신규 포지셔닝 전략</h1><p>본 페이지는 내부 검토용입니다. 비밀번호를 입력하면 내용을 확인할 수 있습니다.</p><form id="passwordForm" class="password-form"><input id="passwordInput" type="password" inputmode="numeric" placeholder="비밀번호 입력"/><button type="submit">입장</button></form><div id="passwordError" class="password-error"></div></div></section>
+<header class="topbar"><nav class="nav"><div class="brand">IPPEO New Positioning</div><div class="navlinks"><a href="../index.html">Gate</a><a href="#summary">Summary</a><a href="#shift">Shift</a><a href="#customer">고객 관점</a><a href="#business">사업 관점</a><a href="#map">Map</a><a href="#final">Final</a></div></nav></header><main><div class="wrap">
+<section class="hero" id="summary"><div class="eyebrow">Mediheim Confidential · New Positioning</div><h1>이뻐 신규<br/>포지셔닝 전략</h1><p class="hero-sub">이뻐는 병원 검색 플랫폼이 아니라, 일본 환자의 한국 미용의료 결정을 안심하게 만드는 K-메디컬 결정지원 플랫폼입니다.</p><div class="hero-grid"><div class="metric"><div class="num">01</div><div class="label">검색에서 결정지원으로</div><p>병원 리스트 제공보다 고객이 예약 결정을 내리게 하는 구조가 핵심입니다.</p></div><div class="metric"><div class="num">02</div><div class="label">단절에서 연결로</div><p>상담·예약·방문·귀국 후 관리까지 하나의 여정으로 설계합니다.</p></div><div class="metric"><div class="num">03</div><div class="label">B2C에서 B2B2C로</div><p>환자 안심 경험을 병원 매출 전환 패키지로 연결합니다.</p></div></div></section>
+<section id="shift"><div class="section-head"><div class="section-no">01 / Strategic Shift</div><div><h2>포지셔닝 전환의 핵심</h2><p class="lead">원본 포지셔닝의 강점은 유지하되, 전략 본체를 ‘의사 직접 상담’ 하나가 아니라 ‘결정지원’으로 확장합니다.</p></div></div><table><thead><tr><th>구분</th><th>기존 관점</th><th>신규 관점</th></tr></thead><tbody><tr><td>시장 정의</td><td>한국 병원 상담·예약</td><td><strong>일본 환자 대상 K-메디컬 결정지원</strong></td></tr><tr><td>고객 가치</td><td>의사 직접 상담</td><td><strong>병원 선택·언어·사후관리 불안 해소</strong></td></tr><tr><td>사업 가치</td><td>환자 연결</td><td><strong>상담·예약·내원 전환 운영 패키지</strong></td></tr><tr><td>제품 역할</td><td>상담 플랫폼</td><td><strong>상담·CRM·예약·사후관리 여정 OS</strong></td></tr></tbody></table></section>
+<section id="customer"><div class="section-head"><div class="section-no">02 / Customer View</div><div><h2>일본 환자 관점의 신규 메시지</h2><p class="lead">환자에게 중요한 것은 정보량이 아니라 ‘내가 안심하고 결정할 수 있는가’입니다.</p></div></div><div class="cards-3"><div class="card"><span class="tag dark">Pain ①</span><h3>병원 선택 불안</h3><p>후기와 가격은 많지만 내 상태에 맞는지 확신하기 어렵습니다.</p></div><div class="card"><span class="tag dark">Pain ②</span><h3>언어 장벽</h3><p>한국 의료진에게 내 고민과 상태가 정확히 전달되는지 불안합니다.</p></div><div class="card"><span class="tag dark">Pain ③</span><h3>귀국 후 단절</h3><p>한국에서 시술받고 일본으로 돌아온 뒤 문제가 생길 때 연결이 약합니다.</p></div></div></section>
+<section id="business"><div class="section-head"><div class="section-no">03 / Business View</div><div><h2>병원 관점의 신규 가치</h2><p class="lead">병원은 시스템 자체보다 실제 외국인환자 유치와 상담·예약·내원 전환을 구매합니다.</p></div></div><table><thead><tr><th>환자 가치</th><th>병원 가치</th><th>메디힘 운영 자산</th></tr></thead><tbody><tr><td>의사 직접 상담</td><td>신뢰 기반 예약 전환율 상승</td><td>문진·사진 제출, 상담 예약, 상담 요약</td></tr><tr><td>언어 걱정 없음</td><td>일본어 인력 부담 완화</td><td>MediLinQ, 통역 SOP</td></tr><tr><td>귀국 후 연결</td><td>취소율 감소, 후기·재방문 가능성</td><td>CRM, 사후관리 프로토콜</td></tr></tbody></table></section>
+
+<section id="map"><div class="section-head"><div class="section-no">04 / Positioning Map</div><div><h2>경쟁축과 이뻐의 좌표</h2><p class="lead">이뻐는 정보 제공 중심이 아니라 결정지원 중심, 단절형 여정이 아니라 연결형 여정에 위치해야 합니다.</p></div></div>
+<div class="card positioning-map-card" style="padding:18px; margin:18px 0 22px;">
+  <div style="font-size:13px;font-weight:800;color:#6b7280;margin:0 0 10px;letter-spacing:.08em;text-transform:uppercase;">POSITIONING MAP IMAGE / KR-v12</div>
+  <svg style="width:100%;display:block;border-radius:18px;border:1px solid var(--line);background:#faf9f6;" xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAF9F6"/>
+      <stop offset="1" stop-color="#F2F1EC"/>
+    </linearGradient>
+    <linearGradient id="quad" x1="680" y1="210" x2="1110" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F2FF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#E7F8EE" stop-opacity="0.95"/>
+    </linearGradient>
+    <style>
+      .kr { font-family: 'Noto Sans CJK KR','Noto Sans KR','NanumGothic','Malgun Gothic',sans-serif; }
+      .title { font-size:34px; font-weight:900; fill:#111; }
+      .sub { font-size:18px; font-weight:500; fill:#555; }
+      .axis { font-size:24px; font-weight:900; fill:#222; }
+      .tick { font-size:18px; font-weight:800; fill:#444; }
+      .boxT { font-size:20px; font-weight:900; fill:#111; }
+      .boxS { font-size:15px; font-weight:600; fill:#7c7c7c; }
+      .boxD { font-size:15px; font-weight:500; fill:#555; }
+      .legendT { font-size:17px; font-weight:900; fill:#222; }
+      .legendD { font-size:14px; font-weight:500; fill:#666; }
+      .foot { font-size:14px; font-weight:500; fill:#666; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="960" rx="28" fill="url(#bg)"/>
+  <rect x="70" y="52" width="1260" height="860" rx="28" fill="#FFFFFF" filter="url(#shadow)"/>
+
+  <text x="110" y="118" class="kr title">포지셔닝 맵: IPPEO와 실제 대안 서비스 비교</text>
+  <text x="110" y="152" class="kr sub">실제 시장 플레이어를 기준으로 보면, IPPEO는 우측 상단의 결정지원 + 전체 여정 연결 영역을 목표로 해야 합니다.</text>
+
+  <rect x="170" y="210" width="940" height="520" rx="20" fill="#FCFCFA" stroke="#DCDCD4"/>
+  <rect x="640" y="210" width="470" height="260" rx="20" fill="url(#quad)"/>
+
+  <g stroke="#E7E7E2" stroke-width="1">
+    <line x1="405" y1="210" x2="405" y2="730"/>
+    <line x1="640" y1="210" x2="640" y2="730"/>
+    <line x1="875" y1="210" x2="875" y2="730"/>
+    <line x1="170" y1="340" x2="1110" y2="340"/>
+    <line x1="170" y1="470" x2="1110" y2="470"/>
+    <line x1="170" y1="600" x2="1110" y2="600"/>
+  </g>
+
+  <g stroke="#111" stroke-width="3">
+    <line x1="170" y1="730" x2="1110" y2="730"/>
+    <line x1="170" y1="730" x2="170" y2="210"/>
+  </g>
+  <polygon points="1110,730 1088,718 1088,742" fill="#111"/>
+  <polygon points="170,210 158,232 182,232" fill="#111"/>
+
+  <text x="640" y="805" text-anchor="middle" class="kr axis">정보 제공 중심 → 결정지원 중심</text>
+  <text x="80" y="470" transform="rotate(-90 80 470)" text-anchor="middle" class="kr axis">단절형 여정 → 전체 여정 연결형</text>
+
+  <!-- separated ticks to avoid overlap -->
+  <text x="128" y="230" class="kr tick">높음</text>
+  <text x="128" y="732" class="kr tick">낮음</text>
+  <text x="170" y="770" class="kr tick">낮음</text>
+  <text x="1040" y="770" class="kr tick">높음</text>
+
+  <!-- 후기/검색 플랫폼 -->
+  <line x1="350" y1="580" x2="300" y2="620" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="350" cy="580" r="12" fill="#7A7A7A"/>
+  <rect x="170" y="606" width="300" height="110" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="192" y="637" class="kr boxT">강남언니 · 바비톡 · 트리뷰</text>
+  <text x="192" y="663" class="kr boxS">후기/검색 플랫폼</text>
+  <text x="192" y="689" class="kr boxD">비교 정보와 후기 탐색은 강하지만</text>
+  <text x="192" y="710" class="kr boxD">개인화된 결정지원은 제한적</text>
+
+  <!-- 병원 직접 채널 -->
+  <line x1="470" y1="620" x2="530" y2="668" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="470" cy="620" r="12" fill="#A88F6A"/>
+  <rect x="490" y="652" width="320" height="112" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="512" y="683" class="kr boxT">병원 홈페이지 · 인스타그램</text>
+  <text x="512" y="709" class="kr boxS">LINE / 카카오 직접 상담 채널</text>
+  <text x="512" y="735" class="kr boxD">직접 문의는 가능하지만</text>
+  <text x="512" y="756" class="kr boxD">비교·연결 구조는 약함</text>
+
+  <!-- 일본 에이전트 -->
+  <line x1="700" y1="480" x2="760" y2="420" stroke="#8C8C8C" stroke-width="2"/>
+  <circle cx="700" cy="480" r="12" fill="#4C78A8"/>
+  <rect x="742" y="358" width="320" height="120" rx="16" fill="#FFF" stroke="#D9D9D2"/>
+  <text x="764" y="390" class="kr boxT">뷰티카사 등 일본 현지 에이전트</text>
+  <text x="764" y="416" class="kr boxS">에이전트 / 미용 컨시어지 서비스</text>
+  <text x="764" y="442" class="kr boxD">편의성은 높지만 중개형 구조라</text>
+  <text x="764" y="463" class="kr boxD">설명 전달과 주도권이 약해질 수 있음</text>
+
+  <!-- IPPEO -->
+  <line x1="920" y1="320" x2="1015" y2="250" stroke="#111" stroke-width="2.5"/>
+  <circle cx="920" cy="320" r="16" fill="#111"/>
+  <circle cx="920" cy="320" r="28" fill="none" stroke="#111" stroke-opacity="0.15" stroke-width="16"/>
+  <rect x="988" y="210" width="292" height="118" rx="20" fill="#111"/>
+  <text x="1012" y="246" class="kr" style="font-size:22px;font-weight:900;fill:#fff;">IPPEO</text>
+  <text x="1012" y="272" class="kr" style="font-size:15px;font-weight:500;fill:#D5D5D5;">의사 상담 기반 결정지원 플랫폼</text>
+  <text x="1012" y="296" class="kr" style="font-size:15px;font-weight:500;fill:#D5D5D5;">상담·예약·방문·귀국 후 연결 구조</text>
+
+  <rect x="1140" y="372" width="150" height="196" rx="18" fill="#FCFCFA" stroke="#DEDED7"/>
+  <text x="1162" y="407" class="kr legendT">IPPEO 영역</text>
+  <text x="1162" y="438" class="kr legendD">• 의사 판단 기반 결정</text>
+  <text x="1162" y="464" class="kr legendD">• 언어 지원</text>
+  <text x="1162" y="490" class="kr legendD">• 예약 연결성</text>
+  <text x="1162" y="516" class="kr legendD">• 귀국 후 연결</text>
+  <text x="1162" y="542" class="kr legendD">• 프리미엄 신뢰 신호</text>
+
+  <!-- footer caption box to avoid overlap -->
+  <rect x="150" y="846" width="560" height="38" rx="12" fill="#F5F4EF" stroke="#E3E2DB"/>
+  <text x="170" y="870" class="kr foot">X축: 정보 제공 중심에서 결정지원 중심 / Y축: 단절형 여정에서 전체 여정 연결형</text>
+</svg>
+
+  <p style="margin:12px 4px 0;color:var(--muted);font-size:14px;">포지셔닝 맵은 X축을 <strong>정보 제공 중심 → 결정지원 중심</strong>, Y축을 <strong>단절형 여정 → 전체 여정 연결형</strong>으로 설정했습니다. 이뻐는 우측 상단의 <strong>결정지원 + 전체 여정 연결</strong> 영역을 목표 좌표로 설정합니다. 실제 비교 대상은 <strong>강남언니·바비톡·트리뷰</strong>, <strong>병원 직접 채널</strong>, <strong>뷰티카사 등 일본 현지 에이전트</strong>입니다.</p>
+</div>
+<table><thead><tr><th>축</th><th>낮음</th><th>높음</th><th>이뻐의 위치</th></tr></thead><tbody><tr><td>X축</td><td>정보 제공 중심</td><td>결정지원 중심</td><td><strong>결정지원 중심</strong></td></tr><tr><td>Y축</td><td>단절형 여정</td><td>상담·예약·귀국 후 연결형 여정</td><td><strong>전체 여정 연결형</strong></td></tr></tbody></table><div class="cards-3"><div class="card"><span class="tag gold">후기/검색 플랫폼</span><h3>정보는 많지만 결정은 고객 몫</h3><p>병원 목록과 후기는 제공하지만 내 상태에 대한 판단은 부족합니다.</p></div><div class="card"><span class="tag gold">에이전트</span><h3>편의는 있지만 의사 직접성 부족</h3><p>중간 전달로 인해 의료진 설명이 왜곡될 수 있습니다.</p></div><div class="card"><span class="tag gold">이뻐</span><h3>결정지원 + 전체 여정 연결</h3><p>상담, 통역, 예약, 방문, 귀국 후 연결을 하나의 여정으로 설계합니다.</p></div></div></section>
+<section id="final"><div class="section-head"><div class="section-no">05 / Final</div><div><h2>최종 신규 포지셔닝안</h2><p class="lead">의사 직접 상담은 차별화의 근거이고, 결정지원은 포지셔닝의 본체입니다.</p></div></div><div class="quote"><p>한국 의사와 직접 상담하고,<br/>귀국 후까지 안심할 수 있는<br/>일본 환자 전용 K-메디컬 상담·예약 플랫폼</p><small>Customer-facing positioning</small></div><div class="okbox"><strong>내부 전략 문장</strong><br/>이뻐는 일본 환자가 한국 미용의료를 결정하기 전, 한국 의료진과 언어 장벽 없이 상담하고, 예약·방문·귀국 후 관리까지 끊기지 않게 연결해주는 K-메디컬 결정지원 플랫폼입니다.</div><div class="warning"><strong>주의</strong><br/>외부 공개 전 의사 직접 상담, 사후관리, 환불·결제, 의료광고 표현은 법무·운영 기준으로 검토해야 합니다.</div></section>
+<footer><div><strong>Mediheim / IPPEO New Positioning Strategy</strong></div><div>내부 전략 검토용입니다.</div></footer></div></main><script>(function(){const PASSWORD='7100';const gate=document.getElementById('passwordGate');const form=document.getElementById('passwordForm');const input=document.getElementById('passwordInput');const error=document.getElementById('passwordError');function unlock(){document.body.classList.remove('locked');if(gate)gate.style.display='none';sessionStorage.setItem('ippeo_strategy_auth','true')}if(sessionStorage.getItem('ippeo_strategy_auth')==='true'){unlock()}else if(input){setTimeout(()=>input.focus(),100)}if(form){form.addEventListener('submit',function(event){event.preventDefault();const value=(input.value||'').trim();if(value===PASSWORD){unlock()}else{error.textContent='비밀번호가 올바르지 않습니다.';input.value='';input.focus()}})}})();</script></body></html>
