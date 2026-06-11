@@ -333,19 +333,12 @@
       table { display: block; overflow-x: auto; }
       th, td { min-width: 150px; }
     }
-    @media (max-width: 520px) {
-      .password-card { padding: 28px 22px 24px; }
-      .password-form { flex-direction: column; }
-      .password-form button { height: 48px; }
-    }
-    @media print {
+@media print {
       .topbar { position: static; }
       body { background: #fff; }
       .card, table, .quote, .step, .priority, .matrix { box-shadow: none; }
       section { break-inside: avoid; }
-      .password-gate { display:none !important; }
-      body.locked .topbar, body.locked main, body.locked footer { display:block !important; }
-    }
+}
   </style>
 </head>
 <body>
@@ -353,6 +346,7 @@
     <nav class="nav">
       <div class="brand">IPPEO Marketing Strategy Framework</div>
       <div class="navlinks">
+        <a href="index.html">Gate</a>
         <a href="#summary">요약</a>
         <a href="#principle">원리</a>
         <a href="#framework">절차</a>
