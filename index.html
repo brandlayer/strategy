@@ -1,37 +1,230 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>IPPEO Strategy Gate</title><meta name="description" content="이뻐 전략 페이지 허브"/><style>
-:root{--bg:#f7f7f4;--paper:#fff;--ink:#161616;--muted:#666;--line:#deded8;--soft:#f1f1ec;--accent:#111;--accent2:#8b6f47;--danger:#a23b3b;--ok:#2f6f50;--blue:#1f3a5f;--shadow:0 18px 50px rgba(0,0,0,.08);--radius:22px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;word-break:keep-all}.topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(247,247,244,.86);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:-.03em;font-size:18px}.navlinks{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.navlinks a{color:var(--muted);text-decoration:none}.navlinks a:hover{color:var(--ink)}.wrap{max-width:1180px;margin:0 auto;padding:0 22px}.hero{padding:76px 0 42px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.62);font-size:13px;color:var(--muted);margin-bottom:24px}h1{font-size:clamp(36px,5.4vw,72px);line-height:1.12;letter-spacing:-.065em;margin:0;max-width:1000px}h2{font-size:clamp(28px,3.4vw,45px);line-height:1.18;letter-spacing:-.055em;margin:0}.hero-sub{margin-top:26px;font-size:clamp(18px,2.1vw,25px);color:#333;max-width:920px;letter-spacing:-.035em}.jp{margin-top:18px;padding-left:18px;border-left:4px solid var(--accent);color:var(--muted);font-size:17px;max-width:900px}.hero-grid,.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.metric,.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}.metric{min-height:150px}.metric .num{font-size:42px;font-weight:900;letter-spacing:-.06em}.metric .label{font-size:16px;font-weight:800;margin-top:8px}.metric p,.card p{margin:8px 0 0;color:var(--muted);font-size:14px}.card h3{margin:0 0 12px;font-size:21px;line-height:1.32;letter-spacing:-.035em}section{padding:46px 0}.section-head{display:grid;grid-template-columns:220px 1fr;gap:26px;align-items:start;margin-bottom:24px}.section-no{font-size:13px;color:var(--muted);font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding-top:10px}.lead{font-size:18px;color:#333;max-width:880px;margin:18px 0 0}.tag{display:inline-block;padding:5px 10px;border-radius:999px;background:var(--soft);color:#444;font-size:12px;font-weight:800;margin-bottom:12px}.tag.dark{background:var(--accent);color:#fff}.tag.gold{background:#efe5d3;color:#6f5430}.tag.blue{background:#e3edf8;color:#1f3a5f}.tag.green{background:#e3f4ea;color:#2f6f50}.quote{background:#111;color:#fff;border-radius:28px;padding:clamp(28px,5vw,56px);margin-top:28px;box-shadow:var(--shadow)}.quote p{font-size:clamp(24px,3vw,40px);line-height:1.3;margin:0;letter-spacing:-.055em;font-weight:800}.quote small{display:block;margin-top:18px;color:#bbb;font-size:15px}table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}th,td{padding:15px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}th{background:#111;color:#fff;font-weight:800}tr:last-child td{border-bottom:0}td strong{color:#111}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px}.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;min-height:210px;position:relative;overflow:hidden}.step::before{content:attr(data-step);position:absolute;right:14px;top:8px;font-size:54px;line-height:1;font-weight:900;color:rgba(0,0,0,.06);letter-spacing:-.08em}.step h3{margin:0 0 12px;font-size:18px;letter-spacing:-.035em}.step p{margin:0;color:var(--muted);font-size:14px}.step .why{margin-top:14px;color:#333;font-weight:700}.timeline{display:grid;gap:12px}.timeline-item{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.timeline-item div{padding:16px;border-right:1px solid var(--line)}.timeline-item div:last-child{border-right:0}.timeline-item .stage{background:#111;color:#fff;font-weight:900}.priority{display:grid;grid-template-columns:100px 1fr 1.2fr;gap:0;background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.priority div{padding:16px;border-bottom:1px solid var(--line)}.priority div:nth-child(3n+1){font-weight:900;background:#111;color:#fff}.priority div:nth-last-child(-n+3){border-bottom:0}.warning{background:#fff7f7;border:1px solid #ecd2d2;color:#5d1d1d;border-radius:20px;padding:24px;margin-top:20px}.okbox{background:#f4fbf7;border:1px solid #d6eadf;color:#16442c;border-radius:20px;padding:24px;margin-top:20px}.strategy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.strategy-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);display:block;transition:transform .18s ease, box-shadow .18s ease}.strategy-card:hover{transform:translateY(-4px);box-shadow:0 24px 70px rgba(0,0,0,.12)}.strategy-card .status{font-size:12px;font-weight:900;color:#fff;background:#111;border-radius:999px;padding:5px 10px;display:inline-block}.strategy-card h3{font-size:24px;line-height:1.24;letter-spacing:-.04em;margin:18px 0 8px}.strategy-card p{color:var(--muted);font-size:14px}.card-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pill{display:inline-block;border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;color:#444}footer{margin-top:48px;padding:40px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}body.locked{overflow:hidden}body.locked .topbar,body.locked main,body.locked footer{display:none!important}.password-gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 20% 20%,rgba(139,111,71,.14),transparent 34%),radial-gradient(circle at 80% 10%,rgba(0,0,0,.08),transparent 30%),var(--bg)}.password-card{width:min(460px,100%);background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:34px 30px 28px}.password-card h1{margin:0 0 10px;font-size:26px;line-height:1.32;letter-spacing:-.04em}.password-card p{margin:0 0 22px;color:var(--muted);font-size:15px}.password-form{display:flex;gap:10px;margin-top:10px}.password-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;font-size:17px;outline:none;background:#fff;color:var(--ink)}.password-form input:focus{border-color:var(--accent2);box-shadow:0 0 0 4px rgba(139,111,71,.12)}.password-form button{border:0;border-radius:14px;padding:0 18px;font-size:15px;font-weight:800;cursor:pointer;color:#fff;background:var(--accent);white-space:nowrap}.password-error{min-height:24px;margin-top:12px;font-size:14px;color:var(--danger);font-weight:700}.password-note{margin-top:18px!important;padding-top:16px;border-top:1px solid var(--line);font-size:12px!important;color:var(--muted)!important}@media(max-width:900px){.nav{align-items:flex-start;flex-direction:column}.navlinks{display:none}.hero-grid,.cards-3,.cards-4,.flow,.strategy-grid{grid-template-columns:1fr}.cards-2{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:8px}.priority,.timeline-item{grid-template-columns:1fr}.priority div,.timeline-item div{border-bottom:1px solid var(--line)!important;border-right:0!important}table{display:block;overflow-x:auto}th,td{min-width:150px}}@media print{.topbar{position:static}body{background:#fff}.card,table,.quote,.step,.priority,.strategy-card{box-shadow:none}section{break-inside:avoid}}
-</style></head>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPPEO Strategy Gate</title>
+  <style>
+:root{
+  --bg:#f7f7f4;
+  --paper:#ffffff;
+  --paper2:#fbfbf8;
+  --ink:#111111;
+  --muted:#6f6f6a;
+  --soft:#efefea;
+  --line:#e6e5df;
+  --black:#111111;
+  --green-bg:#eef8f3;
+  --green-line:#cfe7db;
+  --green:#28634d;
+  --amber-bg:#fff7e8;
+  --amber-line:#f2d7a7;
+  --amber:#8a5a17;
+  --red-bg:#fff0ef;
+  --red-line:#efc3bf;
+  --red:#9a332c;
+  --blue-bg:#f0f5fb;
+  --blue-line:#d5e1ee;
+  --blue:#2f577c;
+  --shadow:0 24px 60px rgba(25,25,20,.08);
+  --shadow-sm:0 12px 30px rgba(25,25,20,.06);
+  --radius:18px;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.65;letter-spacing:-.015em;word-break:keep-all}
+a{text-decoration:none;color:inherit}
+.topbar{height:34px;border-bottom:1px solid var(--line);background:rgba(247,247,244,.88);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;display:flex;align-items:center}
+.topbar .inner{width:min(var(--max),calc(100% - 40px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:14.4px;font-weight:900;letter-spacing:-.02em;color:#151515;white-space:nowrap}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{font-size:13.2px;color:#686864;transition:.16s}
+.nav a:hover{color:#111}
+.container{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:54px 0 92px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#55554f;font-size:13.2px;font-weight:700;box-shadow:0 5px 16px rgba(20,20,20,.03)}
+.hero{padding:18px 0 26px}
+.hero h1{margin:24px 0 18px;font-size:64.8px;line-height:1.04;letter-spacing:-.065em;font-weight:900;max-width:760px}
+.hero p{margin:0;color:#2a2a27;font-size:21.6px;line-height:1.72;max-width:820px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.quick-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;box-shadow:var(--shadow-sm);min-height:128px}
+.quick-card .num{font-size:36px;line-height:1;font-weight:900;letter-spacing:-.07em;margin-bottom:18px}
+.quick-card b{display:block;font-size:15.6px;margin-bottom:7px}
+.quick-card span{display:block;font-size:14.4px;color:#676760;line-height:1.6}
+.section{margin-top:64px}
+.section-head{display:grid;grid-template-columns:150px 1fr;gap:34px;align-items:start;margin-bottom:26px}
+.kicker{font-size:12px;font-weight:900;letter-spacing:.08em;color:#4e4e49;text-transform:uppercase;padding-top:10px}
+.section-title h2{font-size:40.8px;line-height:1.16;letter-spacing:-.05em;margin:0 0 14px;font-weight:900}
+.section-title p{margin:0;color:#3c3c37;font-size:16.8px;line-height:1.75;max-width:850px}
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
+.strategy-card{display:flex;flex-direction:column;min-height:520px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px 18px 16px;box-shadow:var(--shadow);transition:.18s ease;position:relative;overflow:hidden}
+.strategy-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(20,20,20,.12)}
+.strategy-card .label{align-self:flex-start;background:#0f0f0f;color:#fff;border-radius:999px;padding:5px 8px;font-size:10.8px;font-weight:900;letter-spacing:.03em;margin-bottom:18px;text-transform:uppercase}
+.strategy-card h3{font-size:25.2px;line-height:1.22;letter-spacing:-.045em;margin:0 0 14px;font-weight:900;min-height:78px}
+.strategy-card .desc{font-size:14.4px;color:#55554f;line-height:1.72;margin:0 0 20px;min-height:80px}
+.meta-list{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:0 0 16px;display:grid;gap:16px}
+.meta-row{display:grid;grid-template-columns:52px 1fr;gap:12px;font-size:14.4px;line-height:1.65}
+.meta-row b{font-size:13.2px;color:#0f0f0f;font-weight:900}
+.meta-row span{color:#33332f}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.chip{background:#f1f1ec;border:1px solid #e4e4de;border-radius:999px;padding:4px 8px;font-size:12px;color:#44443f;font-weight:700}
+.card-no{display:inline-flex;align-items:center;justify-content:center;width:27px;height:23px;border-radius:999px;background:#f7f7f1;border:1px solid #e7e6df;font-size:12px;font-weight:900;color:#4e4e49}
+.strategy-card.featured{background:linear-gradient(180deg,#ffffff 0%,#fbfffd 100%);border-color:#d9e7df}
+.strategy-card.featured::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:#111}
+.table-wrap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:15.6px;background:#fff}
+th,td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#111;color:#fff;font-size:14.4px;font-weight:800}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:800;color:#111}
+.note{margin-top:20px;padding:20px 22px;border-radius:14px;border:1px solid var(--green-line);background:var(--green-bg);color:#214b3c;font-size:15.6px;line-height:1.75}
+.warning{margin-top:20px;padding:20px 22px;border-radius:14px;border:1px solid var(--amber-line);background:var(--amber-bg);color:#654111;font-size:15.6px;line-height:1.75}
+.footer{border-top:1px solid var(--line);margin-top:82px;padding-top:28px;color:#777770;font-size:13.2px;line-height:1.7}
+.footer b{display:block;color:#33332f;margin-bottom:4px}.gate-overlay{position:fixed;inset:0;background:rgba(247,247,244,.96);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}.gate-card{width:min(420px,100%);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 80px rgba(25,25,20,.16);padding:28px}.gate-card h1{margin:12px 0 10px;font-size:33.6px;line-height:1.18;letter-spacing:-.05em}.gate-card p{margin:0 0 18px;color:#5f5f59;font-size:15.6px}.gate-form{display:flex;gap:8px}.gate-form input{flex:1;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font-size:18px;background:#fbfbf8}.gate-form button{border:0;border-radius:12px;background:#111;color:#fff;font-weight:900;padding:0 18px;cursor:pointer}.gate-error{min-height:18px;margin-top:10px;color:#9a332c;font-size:14.4px}body.locked .topbar,body.locked .container{display:none}.detail-hero h1{max-width:900px}.inline-index{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}.index-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow-sm)}.index-card b{display:block;font-size:15.6px;margin-bottom:8px}.index-card span{font-size:14.4px;color:#66665f;line-height:1.6}.content-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:var(--shadow-sm)}.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.content-grid.two{grid-template-columns:repeat(2,1fr)}.content-card h3{font-size:21.6px;margin:0 0 10px;line-height:1.28;letter-spacing:-.035em}.content-card p{margin:0;color:#55554f;font-size:15.6px;line-height:1.75}.mini-label{display:inline-block;background:#111;color:#fff;border-radius:999px;padding:5px 8px;font-size:10.8px;font-weight:900;margin-bottom:14px;text-transform:uppercase}.flow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.flow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 11px;font-size:14.4px;font-weight:800;box-shadow:0 8px 22px rgba(20,20,20,.04)}.quote{background:#fff;border:1px solid var(--line);border-left:5px solid #111;border-radius:15px;padding:22px;font-size:21.6px;font-weight:900;line-height:1.55;letter-spacing:-.035em;box-shadow:var(--shadow-sm)}.toc-list{columns:2;column-gap:38px;margin:0;padding-left:18px}.toc-list li{break-inside:avoid;margin:0 0 10px;font-size:15.6px;color:#3f3f3a}.print-only{display:none}
+@media(max-width:1050px){.card-grid{grid-template-columns:repeat(2,1fr)}.quick,.content-grid,.content-grid.two,.inline-index{grid-template-columns:1fr 1fr}.strategy-card{min-height:auto}.section-head{grid-template-columns:1fr;gap:10px}.kicker{padding-top:0}.hero h1{font-size:50.4px}}
+@media(max-width:680px){.topbar .inner{width:calc(100% - 28px)}.nav{display:none}.container{width:calc(100% - 28px);padding-top:34px}.hero h1{font-size:43.2px}.hero p{font-size:18px}.quick,.card-grid,.content-grid,.content-grid.two,.inline-index{grid-template-columns:1fr}.section{margin-top:46px}.section-title h2{font-size:33.6px}.toc-list{columns:1}.strategy-card h3{min-height:auto}.strategy-card .desc{min-height:auto}.gate-form{flex-direction:column}.gate-form button{height:46px}}
+@media print{.topbar,.gate-overlay{display:none!important}.container{width:100%;max-width:none;padding:24px}.strategy-card,.content-card,.quick-card,.table-wrap{box-shadow:none}.print-only{display:block}}
+</style>
+</head>
 <body class="locked">
-<section id="passwordGate" class="password-gate" aria-label="비밀번호 입력 화면">
-  <div class="password-card">
-    <span class="eyebrow">CONFIDENTIAL</span>
-    <h1>IPPEO Strategy Hub</h1>
-    <p>본 페이지는 내부 검토용입니다. 비밀번호를 입력하면 내용을 확인할 수 있습니다.</p>
-    <form id="passwordForm" class="password-form">
-      <input id="passwordInput" type="password" inputmode="numeric" autocomplete="current-password" placeholder="비밀번호 입력" aria-label="비밀번호" />
-      <button type="submit">입장</button>
-    </form>
-    <div id="passwordError" class="password-error" role="alert"></div>
-    <p class="password-note">간단한 내부 공유용 접근 제한입니다. 외부 공개 또는 민감자료 보호에는 서버 인증/비공개 저장소 사용을 권장합니다.</p>
+  <div class="gate-overlay" id="gateOverlay">
+    <div class="gate-card">
+      <span class="badge">Medihim Confidential</span>
+      <h1>이뻐 전략 페이지<br/>게이트 허브</h1>
+      <p>내부 전략 검토용 페이지입니다. 비밀번호를 입력하면 내용을 확인할 수 있습니다.</p>
+      <div class="gate-form">
+        <input id="passwordInput" type="password" inputmode="numeric" placeholder="비밀번호" />
+        <button onclick="unlockGate()">입장</button>
+      </div>
+      <div class="gate-error" id="gateError"></div>
+    </div>
   </div>
-</section>
 
-<header class="topbar"><nav class="nav"><div class="brand">IPPEO Strategy Gate</div><div class="navlinks"><a href="#overview">Overview</a><a href="#cards">Strategy Cards</a><a href="#guide">Update Guide</a></div></nav></header>
-<main><div class="wrap">
-<section class="hero" id="overview"><div class="eyebrow">Mediheim Confidential · Strategy Gateway</div><h1>이뻐 전략 페이지<br/>게이트 허브</h1><p class="hero-sub">신규 전략 페이지가 생성될 때마다 카드형 배너를 추가해, 내부 팀이 전략 산출물에 빠르게 접근할 수 있도록 구성한 진입 페이지입니다.</p><div class="hero-grid"><div class="metric"><div class="num">01</div><div class="label">전략 카드</div><p>각 전략 페이지를 카드형 배너로 관리합니다.</p></div><div class="metric"><div class="num">02</div><div class="label">빠른 진입</div><p>STP/JTBD, 포지셔닝, GTM, 손익모델 등 주요 페이지로 이동합니다.</p></div><div class="metric"><div class="num">03</div><div class="label">보안 게이트</div><p>보안상 비밀번호를 입력해 주세요.</p></div></div></section>
-<section id="cards"><div class="section-head"><div class="section-no">01 / Strategy Cards</div><div><h2>전략 페이지 퀵보딩</h2><p class="lead">전략 페이지를 시계열 흐름에 맞춰 포지셔닝 원본 → 신규 포지셔닝안 → JTBD안 → MECE 마케팅 전략안 → 차별화 스코어링 리포트 순으로 정리했습니다. 각 카드에서 핵심 주제와 식별 포인트를 바로 확인할 수 있습니다.</p></div></div>
-<div class="strategy-grid">
-<a class="strategy-card" href="strategies/ippeo-positioning-original.html"><span class="status">01 · ORIGINAL</span><h3>이뻐 포지셔닝 및 차별화 전략</h3><p>최초 포지셔닝 문장과 차별화 3축을 확인하는 기준 문서입니다. 이후 전략 변경의 출발점으로 사용합니다.</p><table style="margin-top:22px;box-shadow:none;border-radius:14px;"><tbody><tr><td><strong>핵심 주제</strong></td><td>의사 직접 상담 · 실시간 통역 · 귀국 후 사후관리</td></tr><tr><td><strong>주요 내용</strong></td><td>일본 환자의 병원 선택 불안, 언어 장벽, 귀국 후 단절 문제를 정의합니다.</td></tr><tr><td><strong>식별 포인트</strong></td><td>“한국 의사가, 언어 걱정 없이, 집에서 직접 결정을 도와준다”는 원본 메시지입니다.</td></tr></tbody></table><div class="card-meta"><span class="pill">01</span><span class="pill">Original</span><span class="pill">Reference</span></div></a>
-<a class="strategy-card" href="strategies/ippeo-new-positioning.html"><span class="status">02 · NEW POSITIONING</span><h3>이뻐 신규 포지셔닝 전략</h3><p>원본 포지셔닝을 사업·고객 관점에서 재정렬한 전략안입니다. 이뻐를 단순 상담 플랫폼이 아니라 결정지원 플랫폼으로 정의합니다.</p><table style="margin-top:22px;box-shadow:none;border-radius:14px;"><tbody><tr><td><strong>핵심 주제</strong></td><td>검색 플랫폼에서 K-메디컬 결정지원 플랫폼으로 전환</td></tr><tr><td><strong>주요 내용</strong></td><td>환자에게는 안심 결정, 병원에게는 상담·예약·내원 전환을 제공하는 B2B2C 구조입니다.</td></tr><tr><td><strong>식별 포인트</strong></td><td>원본 메시지를 확장해 “결정지원”을 포지셔닝의 본체로 둡니다.</td></tr></tbody></table><div class="card-meta"><span class="pill">02</span><span class="pill">New Positioning</span><span class="pill">Decision Support</span></div></a>
-<a class="strategy-card" href="strategies/ippeo-stp-jtbd-positioning.html"><span class="status">03 · STP/JTBD</span><h3>STP·JTBD 기반 포지셔닝 도출 Report</h3><p>신규 포지셔닝이 왜 도출되었는지 검증하는 분석 문서입니다. 구매시점과 소비시점을 분리해 고객 Job을 설명합니다.</p><table style="margin-top:22px;box-shadow:none;border-radius:14px;"><tbody><tr><td><strong>핵심 주제</strong></td><td>Segmentation · Targeting · JTBD · 구매/소비시점 · 포지셔닝 맵</td></tr><tr><td><strong>주요 내용</strong></td><td>일본 환자가 실제로 고용하는 Job과 포지셔닝 후보 평가, PoC 가설을 정리합니다.</td></tr><tr><td><strong>식별 포인트</strong></td><td>“이뻐의 진짜 경쟁자는 다른 플랫폼이 아니라 결정 보류 상태”라는 분석입니다.</td></tr></tbody></table><div class="card-meta"><span class="pill">03</span><span class="pill">STP</span><span class="pill">JTBD</span><span class="pill">PoC</span></div></a>
-<a class="strategy-card" href="ippeo_mece_marketing_strategy.html"><span class="status">04 · MECE MARKETING</span><h3>이뻐 MECE 마케팅 전략 리포트</h3><p>메디힘 마케팅 프레임워크를 기준으로 이뻐의 차별화, 집중화, USP, BI, 실행 KPI를 누락 없이 정리한 전략 문서입니다.</p><table style="margin-top:22px;box-shadow:none;border-radius:14px;"><tbody><tr><td><strong>핵심 주제</strong></td><td>차별화 · 집중화 · USP · BI · 채널 · KPI · 실행 우선순위</td></tr><tr><td><strong>주요 내용</strong></td><td>이뻐를 정보 탐색 앱이 아닌 한국 미용의료 결정지원 인프라로 정의하고, 병원·에이전시·고객 관점의 실행 구조를 제시합니다.</td></tr><tr><td><strong>식별 포인트</strong></td><td>“더 많은 정보”가 아니라 “더 안전한 결정”을 만드는 마케팅·운영 전략입니다.</td></tr></tbody></table><div class="card-meta"><span class="pill">04</span><span class="pill">MECE</span><span class="pill">Marketing</span><span class="pill">KPI</span></div></a>
+  <header class="topbar">
+    <div class="inner">
+      <a class="brand" href="./index.html">IPPEO Strategy Gate</a>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#cards">Strategy Cards</a>
+        <a href="#update">Update Guide</a>
+      </nav>
+    </div>
+  </header>
 
-<a class="strategy-card" href="ippeo_differentiation_full_report.html"><span class="status">05 · DIFFERENTIATION SCORE</span><h3>이뻐 차별화 요소 설계 및 스코어링 Full Report</h3><p>이뻐가 경쟁사와 다르게 제공하는 구조적 가치와 고객 저니별 강화 속성, 우선순위 가중치 스코어링, 실행 제안까지 정리한 전체 리포트입니다.</p><table style="margin-top:22px;box-shadow:none;border-radius:14px;"><tbody><tr><td><strong>핵심 주제</strong></td><td>구조적 가치 · 고객 저니 · 강화 속성 · 가중치 스코어링 · 실행 MVP</td></tr><tr><td><strong>주요 내용</strong></td><td>의료진 직접 상담, 통역, 문진, 상담기록, 예약금, 운영 OS, 사후관리 등 10대 차별화 요소를 모델링합니다.</td></tr><tr><td><strong>식별 포인트</strong></td><td>“더 많은 선택지”가 아니라 “더 안전한 결정 프로세스”를 만드는 구조적 차별화 리포트입니다.</td></tr></tbody></table><div class="card-meta"><span class="pill">05</span><span class="pill">Differentiation</span><span class="pill">Scoring</span><span class="pill">Full</span></div></a>
-</div></section>
-<section id="guide"><div class="section-head"><div class="section-no">02 / Update Guide</div><div><h2>신규 전략 페이지 추가 방식</h2><p class="lead">전략 상세 HTML을 strategies 폴더에 추가하고, 게이트 페이지의 카드 한 블록을 복사해 링크만 교체합니다.</p></div></div><table><thead><tr><th>단계</th><th>작업</th><th>예시</th></tr></thead><tbody><tr><td>1</td><td>신규 상세 페이지 생성</td><td>strategies/ippeo-gtm-playbook.html</td></tr><tr><td>2</td><td>게이트 페이지에 카드 추가</td><td>title, description, href 변경</td></tr><tr><td>3</td><td>GitHub Pages 업로드</td><td>index.html + strategies 폴더 업로드</td></tr></tbody></table><div class="okbox"><strong>운영 원칙</strong><br/>게이트 페이지는 전략 산출물의 목차이자 내부 공유 허브입니다. 신규 전략이 생길 때마다 카드만 추가하면 전체 구조가 유지됩니다.</div></section>
-<footer><div><strong>Mediheim / IPPEO Strategy Gate</strong></div><div>내부 전략 검토용입니다. 외부 공유 전 의료광고, 개인정보, 의료상담 책임, 결제/환불 표현 검토가 필요합니다.</div></footer>
-</div></main>
-<script>(function(){const PASSWORD='7100';const gate=document.getElementById('passwordGate');const form=document.getElementById('passwordForm');const input=document.getElementById('passwordInput');const error=document.getElementById('passwordError');function unlock(){document.body.classList.remove('locked');if(gate)gate.style.display='none';sessionStorage.setItem('ippeo_strategy_auth','true')}if(sessionStorage.getItem('ippeo_strategy_auth')==='true'){unlock()}else if(input){setTimeout(()=>input.focus(),100)}if(form){form.addEventListener('submit',function(event){event.preventDefault();const value=(input.value||'').trim();if(value===PASSWORD){unlock()}else{error.textContent='비밀번호가 올바르지 않습니다.';input.value='';input.focus()}})}})();</script>
-</body></html>
+  <main class="container">
+    <section class="hero" id="overview">
+      <span class="badge">Medihim Confidential · Strategy Gateway</span>
+      <h1>이뻐 전략 페이지<br/>게이트 허브</h1>
+      <p>신규 전략 페이지가 생성될 때마다 카드형 배너를 추가해, 내부 팀이 전략 산출물에 빠르게 접근할 수 있도록 구성한 진입 페이지입니다.</p>
+      <div class="quick">
+        <div class="quick-card"><div class="num">01</div><b>전략 카드</b><span>각 전략 페이지를 카드형 배너로 관리합니다.</span></div>
+        <div class="quick-card"><div class="num">02</div><b>빠른 진입</b><span>STP/JTBD, 포지셔닝, GTM, 측정모델 등 주요 페이지로 이동합니다.</span></div>
+        <div class="quick-card"><div class="num">03</div><b>보안 게이트</b><span>보안상 비밀번호를 입력해 주세요.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="cards">
+      <div class="section-head">
+        <div class="kicker">01 / Strategy Cards</div>
+        <div class="section-title">
+          <h2>전략 페이지 퀵보딩</h2>
+          <p>전략 페이지를 시계열 흐름에 맞춰 포지셔닝 원본 → 신규 포지셔닝안 → JTBD안 → MECE 마케팅 전략안 → 차별화 스코어링 리포트 → 일본 POC 실행 Playbook 순으로 정리했습니다. 각 카드에서 핵심 주제와 식별 포인트를 바로 확인할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <a class="strategy-card" href="strategies/ippeo-positioning-original.html">
+          <span class="label">01 · Original</span>
+          <h3>이뻐 포지셔닝 및 차별화 전략</h3>
+          <p class="desc">최초 포지셔닝 문장과 차별화 3축을 확인하는 기준 문서입니다. 이후 전략 작업의 출발점으로 사용됩니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>회사 차별성 · 소비자 편익 · 제휴사 확장성</span></div><div class="meta-row"><b>주요 내용</b><span>일본 환자의 병원 선택 불안, 언어 장벽, 가격 불확실성 해결</span></div><div class="meta-row"><b>식별 포인트</b><span>“한국 의료가, 언어 걱정 없이, 아시아 사람처럼 도와준다”는 메시지입니다.</span></div></div>
+          <div class="chips"><span class="card-no">01</span><span class="chip">Original</span><span class="chip">Reference</span></div>
+        </a>
+        <a class="strategy-card" href="strategies/ippeo-new-positioning.html">
+          <span class="label">02 · New Positioning</span>
+          <h3>이뻐 신규 포지셔닝 전략</h3>
+          <p class="desc">일본 포지셔닝 신규 고객 관점에서 차별화 전략안입니다. 이뻐를 단순 상담 플랫폼이 아니라 결정지원 플랫폼으로 정의합니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>검색 플랫폼에서 K-메디컬 결정지원 플랫폼으로 전환</span></div><div class="meta-row"><b>주요 내용</b><span>환자에게는 연결, 병원에게는 의사결정과 운영을 제공하는 B2B2C 구조입니다.</span></div><div class="meta-row"><b>식별 포인트</b><span>무엇을 메시지로 잡을지 “결정지원” 관점에서 정리합니다.</span></div></div>
+          <div class="chips"><span class="card-no">02</span><span class="chip">New Positioning</span><span class="chip">Decision Support</span></div>
+        </a>
+        <a class="strategy-card" href="strategies/ippeo-stp-jtbd-positioning.html">
+          <span class="label">03 · STP/JTBD</span>
+          <h3>STP·JTBD 기반 포지셔닝 도출 Report</h3>
+          <p class="desc">신규 포지셔닝에 따른 일본향 고객 대응안입니다. 구매시점과 소비시점을 분리해 고객 Job을 설명합니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>Segmentation · Targeting · JTBD · 구매/소비시점 · 포지셔닝</span></div><div class="meta-row"><b>주요 내용</b><span>일본 환자가 실제로 고민하는 Job과 포지셔닝 후보 평가, PoC 기준을 제안합니다.</span></div><div class="meta-row"><b>식별 포인트</b><span>“이뻐의 진짜 경쟁자는 다른 플랫폼이 아니라 결정 보류 상태”라는 프레임입니다.</span></div></div>
+          <div class="chips"><span class="card-no">03</span><span class="chip">STP</span><span class="chip">JTBD</span><span class="chip">PoC</span></div>
+        </a>
+        <a class="strategy-card" href="ippeo_mece_marketing_strategy.html">
+          <span class="label">04 · MECE Marketing</span>
+          <h3>이뻐 MECE 마케팅 전략 리포트</h3>
+          <p class="desc">메디힘 마케팅 프레임워크를 기준으로 이뻐의 차별화, 집중화, USP, BI, 실행 KPI를 누락 없이 정리한 전략 문서입니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>차별화 · 집중화 · USP · BI · 채널 · KPI · 실행 우선순위</span></div><div class="meta-row"><b>주요 내용</b><span>이뻐를 일본 현지 언어와 한국 의료인프라 결정지원 인터페이스로 정의합니다.</span></div><div class="meta-row"><b>식별 포인트</b><span>“더 많은 정보”가 아니라 “더 안심할 수 있는 선택 구조”를 만듭니다.</span></div></div>
+          <div class="chips"><span class="card-no">04</span><span class="chip">MECE</span><span class="chip">Marketing</span><span class="chip">KPI</span></div>
+        </a>
+        <a class="strategy-card" href="ippeo_differentiation_full_report.html">
+          <span class="label">05 · Differentiation Score</span>
+          <h3>이뻐 차별화 요소 설계 및 스코어링 Full Report</h3>
+          <p class="desc">이뻐가 경쟁자 대비 어떻게 차별되는 구조가 가장 큰 고객가치를 만들 수 있는지 가중치 스코어링, 실행 체계까지 정리합니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>고객가치 · 고객여정 · 리드 창출 · 가중치 Scoring · 실행 MVP</span></div><div class="meta-row"><b>주요 내용</b><span>의료진 직접 상담, 통역, 문진, 심리기록, 예약금, 운영 OS, 수술관리 등 10대 차별화 요소를 모델링합니다.</span></div><div class="meta-row"><b>식별 포인트</b><span>“더 많은 선택지”가 아니라 “더 안심할 수 있게 도와주는 선택 구조” 자체를 차별화 리포트입니다.</span></div></div>
+          <div class="chips"><span class="card-no">05</span><span class="chip">Differentiation</span><span class="chip">Scoring</span><span class="chip">Full</span></div>
+        </a>
+        <a class="strategy-card featured" href="strategies/ippeo-japan-poc-playbook.html">
+          <span class="label">06 · Japan POC</span>
+          <h3>이뻐 일본 POC 새 결론 시나리오 & 실행 Playbook</h3>
+          <p class="desc">완성형 CRM보다 핵심 Metric 중심으로 일본 성형 오디언스의 반응하는 메시지·랜딩·CTA·Flow를 찾는 실행 문서입니다.</p>
+          <div class="meta-list"><div class="meta-row"><b>핵심 주제</b><span>Metric Funnel MVP · 랜딩 타입 · 메시지 타입 · 앱/웹/LINE Flow 비교</span></div><div class="meta-row"><b>주요 내용</b><span>비용·일정형, 1분 사전 체크형, 일본어 안심 상담형 랜딩을 중심으로 4주 실험을 설계합니다.</span></div><div class="meta-row"><b>식별 포인트</b><span>“CRM을 먼저 만들기보다 CRM에 넣을 가치가 있는 고객 흐름을 먼저 검증한다”는 관점입니다.</span></div></div>
+          <div class="chips"><span class="card-no">06</span><span class="chip">Japan POC</span><span class="chip">Metric Funnel</span><span class="chip">Playbook</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="update">
+      <div class="section-head">
+        <div class="kicker">02 / Update Guide</div>
+        <div class="section-title">
+          <h2>신규 전략 페이지 추가 방식</h2>
+          <p>전략 상세 HTML을 strategies 폴더에 추가하고, 게이트 페이지의 카드 한 블록을 복사해 링크만 교체합니다.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:80px">단계</th><th>작업</th><th>예시</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>신규 상세 페이지 생성</td><td><code>strategies/ippeo-gtm-playbook.html</code></td></tr>
+            <tr><td>2</td><td>게이트 페이지에 카드 추가</td><td>title, description, href 변경</td></tr>
+            <tr><td>3</td><td>GitHub Pages 업로드</td><td><code>index.html</code> + <code>strategies</code> 폴더 업로드</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note"><b>운영 원칙</b><br/>게이트 페이지는 전략 산출물의 목차이자 내부 공유 허브입니다. 신규 문서가 생길 때마다 기존 룩앤필에 맞춰 카드만 추가하면 전체 구조가 유지됩니다.</div>
+    </section>
+
+    <div class="footer"><b>Mediheim / IPPEO Strategy Gate</b>내부 전략 검토용입니다. 외부 공유 전 의료광고, 개인정보, 민감정보, 의료 상담 책임, 결제·환불 표현을 별도 검토해 주세요.</div>
+  </main>
+
+<script>
+const GATE_PASSWORD='7100';
+function unlockGate(){
+  const input=document.getElementById('passwordInput');
+  const err=document.getElementById('gateError');
+  if(input && input.value===GATE_PASSWORD){
+    sessionStorage.setItem('ippeo_strategy_gate_ok','1');
+    document.body.classList.remove('locked');
+    const overlay=document.getElementById('gateOverlay');
+    if(overlay) overlay.style.display='none';
+    return;
+  }
+  if(err) err.textContent='비밀번호를 다시 확인해 주세요.';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem('ippeo_strategy_gate_ok')==='1'){
+    document.body.classList.remove('locked');
+    const overlay=document.getElementById('gateOverlay');
+    if(overlay) overlay.style.display='none';
+  }
+  const input=document.getElementById('passwordInput');
+  if(input){input.focus(); input.addEventListener('keydown',e=>{{if(e.key==='Enter')unlockGate();}});}
+});
+</script>
+</body>
+</html>
