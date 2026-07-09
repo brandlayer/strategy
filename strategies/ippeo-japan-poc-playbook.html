@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이뻐 POC 검증 시나리오 모델링 및 Playbook</title>
+  <title>이뻐 일본 POC 새 결론 시나리오 & 실행 Playbook</title>
   <style>
     :root{
       --bg:#f7f7f4;
@@ -34,7 +34,7 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.65;letter-spacing:-.015em;word-break:keep-all}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.65;letter-spacing:-.015em;word-break:keep-all}
     a{text-decoration:none;color:inherit}
     .topbar{height:34px;border-bottom:1px solid var(--line);background:rgba(247,247,244,.9);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;display:flex;align-items:center}
     .topbar .inner{width:min(var(--max),calc(100% - 40px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
@@ -62,9 +62,29 @@
     .table-wrap{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow-sm);overflow:hidden;margin-top:16px}table{width:100%;border-collapse:collapse;font-size:15.6px;background:#fff}th,td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:#111;color:#fff;font-size:14.4px;font-weight:800}tr:last-child td{border-bottom:0}td:first-child{font-weight:900;color:#111}
     .content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.content-grid.two{grid-template-columns:repeat(2,1fr)}.content-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:var(--shadow-sm)}.content-card h3{font-size:21.6px;margin:0 0 10px;line-height:1.28;letter-spacing:-.035em}.content-card p{margin:0;color:#55554f;font-size:15.6px;line-height:1.75}.mini-label{display:inline-block;background:#111;color:#fff;border-radius:999px;padding:5px 8px;font-size:10.8px;font-weight:900;margin-bottom:14px;text-transform:uppercase}
     .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}.strategy-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px 18px 16px;box-shadow:var(--shadow);transition:.18s ease;position:relative;overflow:hidden}.strategy-card:hover{transform:translateY(-3px);box-shadow:0 28px 70px rgba(20,20,20,.11)}.strategy-card .label{align-self:flex-start;background:#0f0f0f;color:#fff;border-radius:999px;padding:5px 8px;font-size:10.8px;font-weight:900;letter-spacing:.03em;margin-bottom:18px;text-transform:uppercase}.strategy-card h3{font-size:25.2px;line-height:1.22;letter-spacing:-.045em;margin:0 0 14px;font-weight:900}.strategy-card .desc{font-size:14.4px;color:#55554f;line-height:1.72;margin:0 0 18px}.meta-list{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:0 0 14px;display:grid;gap:13px}.meta-row{display:grid;grid-template-columns:52px 1fr;gap:12px;font-size:14.4px;line-height:1.65}.meta-row b{font-size:13.2px;color:#0f0f0f;font-weight:900}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:8px}.chip{background:#f1f1ec;border:1px solid #e4e4de;border-radius:999px;padding:4px 8px;font-size:12px;color:#44443f;font-weight:700}
+
+    .keyvisual-block{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow-sm);margin:22px 0 18px}
+    .keyvisual-frame{position:relative;width:100%;aspect-ratio:3/2;border-radius:14px;border:1px solid #ecebe6;background:#22364A;overflow:hidden}
+    .keyvisual-frame iframe{display:block;width:100%;height:100%;border:0;background:#22364A}
+    .keyvisual-block img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #ecebe6;background:#f8f8f5}
+    .keyvisual-caption{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:0 2px;color:#5a5a54;font-size:14.4px;line-height:1.6}
+    .keyvisual-caption b{color:#111;font-weight:900}
+    .keyvisual-caption .links{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .keyvisual-caption a{display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid #aaa;color:#2f577c;font-weight:900}
+
+    .decision-list{display:grid;gap:12px;margin-top:16px}
+    .decision-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow-sm)}
+    .decision-item h3{margin:0 0 10px;font-size:21.6px;line-height:1.3;letter-spacing:-.035em}
+    .decision-item ul{margin:8px 0 0 0;padding-left:20px;color:#484842;font-size:15.6px;line-height:1.78}
+    .decision-item li{margin:4px 0}
+    .decision-tag{display:inline-flex;align-items:center;border-radius:999px;background:#111;color:#fff;padding:4px 8px;font-size:10.8px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
+    .decision-tag.go{background:#28634d}.decision-tag.hold{background:#8a5a17}.decision-tag.stop{background:#9a332c}.decision-tag.scale{background:#2f577c}
+    .criteria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .criteria-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px 20px;box-shadow:var(--shadow-sm)}
+    .criteria-card b{display:block;font-size:18px;margin-bottom:8px}.criteria-card p{margin:0;color:#55554f;font-size:15.6px;line-height:1.72}
     .note,.warning,.risk{margin-top:18px;padding:20px 22px;border-radius:14px;font-size:15.6px;line-height:1.75}.note{border:1px solid var(--green-line);background:var(--green-bg);color:#214b3c}.warning{border:1px solid var(--amber-line);background:var(--amber-bg);color:#654111}.risk{border:1px solid var(--red-line);background:var(--red-bg);color:#67211d}.note b,.warning b,.risk b{display:block;margin-bottom:4px}.decision-box{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.footer{border-top:1px solid var(--line);margin-top:82px;padding-top:28px;color:#777770;font-size:13.2px;line-height:1.7}.footer b{display:block;color:#33332f;margin-bottom:4px}
-    @media(max-width:1050px){.layout{grid-template-columns:1fr;gap:28px}.lnb{position:relative;top:auto}.lnb-nav{grid-template-columns:repeat(2,1fr)}.hero-meta,.content-grid,.content-grid.two,.card-grid,.decision-box{grid-template-columns:1fr 1fr}.section-head{grid-template-columns:1fr;gap:10px}.kicker{padding-top:0}.hero h1{font-size:50.4px}}
-    @media(max-width:680px){.topbar .inner,.page{width:calc(100% - 28px)}.nav{display:none}.page{padding-top:34px}.hero h1{font-size:43.2px}.hero p{font-size:18px}.hero-meta,.content-grid,.content-grid.two,.card-grid,.decision-box,.lnb-nav{grid-template-columns:1fr}.section{margin-bottom:48px}.section-title h2{font-size:33.6px}th,td{padding:13px 12px;font-size:14.4px}.table-wrap{overflow-x:auto}.table-wrap table{min-width:720px}}
+    @media(max-width:1050px){.layout{grid-template-columns:1fr;gap:28px}.lnb{position:relative;top:auto}.lnb-nav{grid-template-columns:repeat(2,1fr)}.hero-meta,.content-grid,.content-grid.two,.card-grid,.decision-box,.criteria-grid{grid-template-columns:1fr 1fr}.section-head{grid-template-columns:1fr;gap:10px}.kicker{padding-top:0}.hero h1{font-size:50.4px}}
+    @media(max-width:680px){.topbar .inner,.page{width:calc(100% - 28px)}.nav{display:none}.page{padding-top:34px}.hero h1{font-size:43.2px}.hero p{font-size:18px}.hero-meta,.content-grid,.content-grid.two,.card-grid,.decision-box,.criteria-grid,.lnb-nav{grid-template-columns:1fr}.section{margin-bottom:48px}.section-title h2{font-size:33.6px}th,td{padding:13px 12px;font-size:14.4px}.table-wrap{overflow-x:auto}.table-wrap table{min-width:720px}}
   </style>
 </head>
 <body>
@@ -83,8 +103,8 @@
   <main class="page">
     <section class="hero">
       <span class="badge">06 · JAPAN POC · Metric Funnel MVP</span>
-      <h1>이뻐 POC<br/>검증 시나리오 모델링 & 실행 Playbook</h1> 
-      <p>완성형 CRM을 먼저 만들기보다, 핵심 Metric 중심으로 일본 성형 오디언스의 반응하는 메시지·랜딩·CTA·Flow를 빠르게 찾는 실행 문서입니다.</p>
+      <h1>이뻐 일본 POC<br/>새 결론 시나리오 & 실행 Playbook</h1>
+      <p>완성형 CRM보다 먼저, 1차 POC에 필요한 랜딩·메시지·CTA·캠페인·소재 수량과 업무 산출물을 명확히 정리한 실행 문서입니다.</p>
       <div class="hero-meta">
         <div class="meta-card"><div class="num">01</div><b>핵심 결론</b><span>CRM 선개발보다 Metric Funnel MVP 우선</span></div>
         <div class="meta-card"><div class="num">02</div><b>검증 대상</b><span>랜딩·메시지·CTA·Flow Fit</span></div>
@@ -103,12 +123,13 @@
             <a href="#landing"><span class="no">04</span><span>랜딩 타입</span></a>
             <a href="#message"><span class="no">05</span><span>메시지·CTA</span></a>
             <a href="#flow"><span class="no">06</span><span>Flow 비교</span></a>
-            <a href="#metrics"><span class="no">07</span><span>Tracking Metric</span></a>
-            <a href="#playbook"><span class="no">08</span><span>4주 Playbook</span></a>
-            <a href="#proposal"><span class="no">09</span><span>추가 제언</span></a>
-            <a href="#decision"><span class="no">10</span><span>의사결정 기준</span></a>
+            <a href="#execution"><span class="no">07</span><span>1차 POC 실행 매트릭스</span></a>
+            <a href="#metrics"><span class="no">08</span><span>Tracking Metric</span></a>
+            <a href="#playbook"><span class="no">09</span><span>4주 Playbook</span></a>
+            <a href="#proposal"><span class="no">10</span><span>추가 제언</span></a>
+            <a href="#decision"><span class="no">11</span><span>의사결정 기준</span></a>
           </nav>
-          <div class="lnb-help"><b>읽는 순서</b>먼저 01·02로 방향성을 확인하고, 실행 담당자는 04~08을 기준으로 랜딩·광고·트래킹 작업을 진행합니다.</div>
+          <div class="lnb-help"><b>읽는 순서</b>먼저 01·02로 방향성을 확인하고, 실행 담당자는 07을 기준으로 랜딩·광고·소재·CTA·트래킹 업무를 배정합니다.</div>
           <a class="back" href="../index.html">← 게이트 페이지로 돌아가기</a>
         </div>
       </aside>
@@ -124,6 +145,19 @@
             </div>
           </div>
           <div class="quote">지금은 CRM을 만드는 단계가 아니라, CRM에 넣을 가치가 있는 고객 흐름이 실제로 존재하는지 검증하는 단계입니다.<small>핵심 운영 원칙: 완벽한 고객 추적보다 의사결정 가능한 전환 지표를 우선합니다.</small></div>
+          <figure class="keyvisual-block">
+            <div class="keyvisual-frame" aria-label="POC 검증 시나리오 HTML 키비주얼">
+              <iframe src="../assets/poc-validation-keyvisual.html" title="POC 검증 시나리오 키비주얼" loading="lazy"></iframe>
+            </div>
+            <figcaption class="keyvisual-caption">
+              <span><b>Key Visual</b> · 첨부 HTML을 페이지 안에서 직접 렌더링합니다. ‘아이디어 불패의 법칙’ 관점에서 실제처럼 먼저 검증하는 2가지 POC 시나리오입니다.</span>
+              <span class="links">
+                <a href="../assets/poc-validation-keyvisual.html" target="_blank" rel="noopener">HTML 원본 열기</a>
+                <a href="../assets/poc-validation-keyvisual.pdf" target="_blank" rel="noopener">PDF 열기</a>
+                <a href="../assets/poc-validation-keyvisual.png" target="_blank" rel="noopener">PNG 백업 열기</a>
+              </span>
+            </figcaption>
+          </figure>
           <div class="flow"><span>광고</span><span>랜딩</span><span>Page Depth</span><span>LINE 클릭</span><span>친구추가</span><span>앱/웹 진입</span><span>회원가입</span><span>문진 완료</span><span>예약</span></div>
           <div class="table-wrap"><table><thead><tr><th>구분</th><th>기존 접근</th><th>새 접근</th><th>판단 기준</th></tr></thead><tbody><tr><td>목표</td><td>CRM·식별자·자동화를 먼저 구축</td><td>핵심 Metric으로 반응 구간을 먼저 확인</td><td>4주 내 전환 병목 확인 가능 여부</td></tr><tr><td>측정</td><td>리드 단위 추적 정확도 중심</td><td>구간별 전환율 중심</td><td>랜딩→LINE→문진→예약 전환율</td></tr><tr><td>개발</td><td>앱·LINE·CRM 연동이 무거움</td><td>GA4/GTM + 앱 이벤트 + 수기 집계로 시작</td><td>개발 전 시장 신호 확보</td></tr><tr><td>의사결정</td><td>시스템 구축 완료 후 판단</td><td>반응이 있는 메시지와 Flow만 고도화</td><td>검증된 조합에만 리소스 투입</td></tr></tbody></table></div>
         </section>
@@ -142,54 +176,221 @@
 
         <section class="section" id="hypothesis">
           <div class="section-head"><div class="kicker">03 / Hypothesis Fit</div><div class="section-title"><h2>찾아야 할 Fit의 유형</h2><p>디지털 모객 가능성은 하나의 Fit이 아니라 오디언스, 문제, 메시지, 랜딩, CTA, Flow Fit의 조합으로 판단해야 합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Fit 유형</th><th>핵심 질문</th><th>검증 Metric</th><th>대표 실험</th></tr></thead><tbody><tr><td>오디언스 Fit</td><td>어떤 일본 성형 고객군이 반응하는가?</td><td>CTR, 랜딩 유입, LINE 클릭</td><td>정보 탐색형, 시술 고민형, 방한 검토형 비교</td></tr><tr><td>문제 Fit</td><td>고객은 어떤 불안·궁금증에 반응하는가?</td><td>Page Depth, CTA 클릭률</td><td>비용, 일정, 언어, 병원 신뢰, 상담 가능성 메시지 비교</td></tr><tr><td>메시지 Fit</td><td>어떤 표현이 행동을 만드는가?</td><td>LINE 클릭률, 문진 시작률</td><td>비용 확인형 vs 1분 사전 체크형 vs 일본어 안심형</td></tr><tr><td>랜딩 Fit</td><td>어떤 랜딩이 다음 단계 이동을 만드는가?</td><td>완주율, CTA 클릭률, 문진 완료율</td><td>체크리스트형, 비용·일정형, 상담회형 비교</td></tr><tr><td>CTA Fit</td><td>낮은 CTA와 높은 CTA 중 무엇이 작동하는가?</td><td>CTA 클릭률, 예약률</td><td>체크리스트 받기, 1분 체크, 상담 예약 비교</td></tr><tr><td>Flow Fit</td><td>앱 설치형, 웹 문진형, LINE 상담형 중 무엇이 전환되는가?</td><td>가입률, 문진 완료율, 예약률</td><td>기존 앱 Flow와 웹 문진 우회 Flow 비교</td></tr></tbody></table></div>
+          <div class="table-wrap"><table><thead><tr><th>Fit 유형</th><th>핵심 질문</th><th>검증 Metric</th><th>대표 실험</th></tr></thead><tbody><tr><td>오디언스 Fit</td><td>어떤 일본 성형 고객군이 반응하는가?</td><td>CTR, 랜딩 유입, LINE 클릭</td><td>정보 탐색형, 시술 고민형, 방한 검토형 비교</td></tr><tr><td>문제 Fit</td><td>고객은 어떤 불안·궁금증에 반응하는가?</td><td>Page Depth, CTA 클릭률</td><td>비용, 일정, 언어, 병원 신뢰, 상담 가능성 메시지 비교</td></tr><tr><td>메시지 Fit</td><td>어떤 표현이 행동을 만드는가?</td><td>LINE 클릭률, 문진 시작률</td><td>비용 확인형 vs 1분 사전 체크형 vs 일본어 안심형</td></tr><tr><td>랜딩 Fit</td><td>어떤 랜딩이 다음 단계 이동을 만드는가?</td><td>완주율, CTA 클릭률, 문진 완료율</td><td>체크리스트형, 비용·일정형, 상담회형 비교</td></tr><tr><td>CTA Fit</td><td>낮은 CTA와 높은 CTA 중 무엇이 작동하는가?</td><td>CTA 클릭률, 예약률</td><td>체크리스트 받기, 1분 체크, 상담 예약 비교</td></tr><tr><td>Flow Fit</td><td>앱 설치형, 웹 사전 체크형, LINE 상담형 중 무엇이 전환되는가?</td><td>가입률, 문진 완료율, 예약률</td><td>기존 앱 Flow와 웹 사전 체크 우회 Flow 비교</td></tr></tbody></table></div>
         </section>
 
         <section class="section" id="landing">
-          <div class="section-head"><div class="kicker">04 / Landing Types</div><div class="section-title"><h2>실행할 랜딩 타입</h2><p>초기에는 대량 제작보다 목적이 다른 5개 타입을 최소 구성으로 테스트하는 것이 적합합니다.</p></div></div>
+          <div class="section-head"><div class="kicker">04 / Landing Types</div><div class="section-title"><h2>실행할 랜딩 타입</h2><p>1차 POC는 모든 랜딩을 동시에 만들지 않습니다. 콜드 유입 검증용 3개와 기존 앱 Flow 비교용 1개, 총 4개로 시작하고, 예약 전환형은 2차 리타겟팅용으로 추가합니다.</p></div></div>
           <div class="card-grid">
-            <div class="strategy-card"><span class="label">L1 · Checklist</span><h3>체크리스트형 랜딩</h3><p class="desc">정보 탐색 단계 고객을 낮은 부담으로 LINE에 진입시키는 유형입니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>한국 성형 전 체크리스트 받기</span></div><div class="meta-row"><b>목표</b><span>LINE 친구 추가와 재접촉 풀 확보</span></div><div class="meta-row"><b>Metric</b><span>완주율, LINE 클릭률, 친구추가율</span></div></div><div class="chips"><span class="chip">Low CTA</span><span class="chip">TOF</span></div></div>
-            <div class="strategy-card"><span class="label">L2 · 1min Check</span><h3>1분 사전 체크형 랜딩</h3><p class="desc">특정 부위 고민 고객이 자신의 상태와 상담 가능성을 확인하도록 유도합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>내 고민 1분 사전 체크</span></div><div class="meta-row"><b>목표</b><span>문진 시작·완료 유도</span></div><div class="meta-row"><b>Metric</b><span>체크 시작률, 문진 완료율</span></div></div><div class="chips"><span class="chip">Mid CTA</span><span class="chip">Lead</span></div></div>
-            <div class="strategy-card"><span class="label">L3 · Cost Schedule</span><h3>비용·일정 확인형 랜딩</h3><p class="desc">실제 방한 가능성과 수술 검토 의향이 있는 고객을 선별합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>방한 전 비용·일정 확인</span></div><div class="meta-row"><b>목표</b><span>예산·일정 입력 고객 확보</span></div><div class="meta-row"><b>Metric</b><span>문진 완료, 예약 전환</span></div></div><div class="chips"><span class="chip">Business</span><span class="chip">BOF</span></div></div>
-            <div class="strategy-card"><span class="label">L4 · Online Consult</span><h3>온라인 상담회형 랜딩</h3><p class="desc">상담회 자체에 대한 직접 수요와 고의향 고객을 검증합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>온라인 상담 슬롯 예약</span></div><div class="meta-row"><b>목표</b><span>상담 예약과 참석 의향 확인</span></div><div class="meta-row"><b>Metric</b><span>예약률, 노쇼율, 상담 참석률</span></div></div><div class="chips"><span class="chip">High CTA</span><span class="chip">Reservation</span></div></div>
-            <div class="strategy-card"><span class="label">L5 · Japanese Support</span><h3>일본어 안심 상담형 랜딩</h3><p class="desc">언어·운영 불안을 낮추고 LINE 진입 신뢰를 높이는 유형입니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>LINE으로 일본어 상담 준비 시작</span></div><div class="meta-row"><b>목표</b><span>LINE 친구 추가와 후속 문진 유도</span></div><div class="meta-row"><b>Metric</b><span>LINE 클릭률, 친구추가율</span></div></div><div class="chips"><span class="chip">Trust</span><span class="chip">LINE</span></div></div>
+            <div class="strategy-card"><span class="label">L01 · Cost Schedule</span><h3>비용·일정 확인형</h3><p class="desc">실제 방한 가능성과 수술 검토 의향이 있는 고객을 선별합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>비용·일정 확인하기</span></div><div class="meta-row"><b>용도</b><span>1차 핵심 랜딩</span></div><div class="meta-row"><b>Metric</b><span>LINE 클릭률, 문진 완료, 예약 전환</span></div></div><div class="chips"><span class="chip">Priority 1</span><span class="chip">Business</span></div></div>
+            <div class="strategy-card"><span class="label">L02 · 1min Check</span><h3>1분 사전 체크형</h3><p class="desc">특정 부위 고민 고객이 자신의 상담 가능성과 준비 상태를 확인하도록 유도합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>1분 사전 체크 시작하기</span></div><div class="meta-row"><b>용도</b><span>1차 핵심 랜딩</span></div><div class="meta-row"><b>Metric</b><span>체크 시작률, 앱 문진/웹 사전 체크 완료율</span></div></div><div class="chips"><span class="chip">Priority 2</span><span class="chip">Lead</span></div></div>
+            <div class="strategy-card"><span class="label">L03 · Japanese LINE</span><h3>일본어 안심 LINE형</h3><p class="desc">언어·상담 절차 불안을 낮추고 LINE 진입 신뢰를 높입니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>LINE으로 상담 준비 시작</span></div><div class="meta-row"><b>용도</b><span>1차 핵심 랜딩</span></div><div class="meta-row"><b>Metric</b><span>LINE 클릭률, 친구추가율, 응답률</span></div></div><div class="chips"><span class="chip">Priority 3</span><span class="chip">Trust</span></div></div>
+            <div class="strategy-card"><span class="label">L04 · App Flow</span><h3>앱 설치형 비교 랜딩</h3><p class="desc">기존 이뻐 공식 Flow인 앱 다운로드·가입·앱 문진의 장벽을 확인합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>앱에서 문진 작성하기</span></div><div class="meta-row"><b>용도</b><span>Flow 비교용</span></div><div class="meta-row"><b>Metric</b><span>앱 실행률, 가입률, 앱 문진 완료율</span></div></div><div class="chips"><span class="chip">Benchmark</span><span class="chip">App</span></div></div>
+            <div class="strategy-card"><span class="label">L05 · Reservation</span><h3>온라인 상담 예약형</h3><p class="desc">문진 완료자와 고의향 고객을 대상으로 상담 슬롯 예약 전환을 확인합니다.</p><div class="meta-list"><div class="meta-row"><b>CTA</b><span>온라인 상담 슬롯 예약하기</span></div><div class="meta-row"><b>용도</b><span>2차 리타겟팅용</span></div><div class="meta-row"><b>Metric</b><span>예약 완료율, 노쇼율, 상담 참석률</span></div></div><div class="chips"><span class="chip">Phase 2</span><span class="chip">Reservation</span></div></div>
           </div>
+          <div class="note"><b>제작 기준</b>1차 제작은 L01~L04 총 4개입니다. L05는 1차 데이터에서 문진 완료자 또는 고의향 LINE 친구가 확인된 뒤 리타겟팅용으로 추가합니다.</div>
         </section>
 
+        
         <section class="section" id="message">
-          <div class="section-head"><div class="kicker">05 / Message · CTA</div><div class="section-title"><h2>메시지 타입과 CTA 조합</h2><p>메시지는 고객의 불안을 건드리고, CTA는 고객의 부담 수준에 맞춰 낮은 단계에서 높은 단계로 설계합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>메시지 타입</th><th>메시지 원형</th><th>적합 랜딩</th><th>권장 CTA</th></tr></thead><tbody><tr><td>비용 확인형</td><td>한국 성형을 고민 중이라면, 방한 전 예상 비용과 상담 절차를 먼저 확인하세요.</td><td>L3</td><td>비용·일정 확인</td></tr><tr><td>상담 가능성형</td><td>내 눈·코·윤곽 고민이 한국 병원 상담 대상인지 1분만에 확인해보세요.</td><td>L2</td><td>1분 사전 체크</td></tr><tr><td>일본어 안심형</td><td>일본어 안내로 한국 성형 상담 전 필요한 내용을 정리해드립니다.</td><td>L5</td><td>LINE 상담 시작</td></tr><tr><td>온라인 상담회형</td><td>한국 방문 전, 온라인으로 상담 가능 여부와 일정을 먼저 확인하세요.</td><td>L4</td><td>상담 슬롯 예약</td></tr><tr><td>체크리스트형</td><td>한국 성형 전 반드시 확인해야 할 비용·일정·상담 체크리스트를 받아보세요.</td><td>L1</td><td>체크리스트 받기</td></tr></tbody></table></div>
+          <div class="section-head"><div class="kicker">05 / Message · CTA</div><div class="section-title"><h2>메시지 타입과 CTA 조합</h2><p>1차 POC의 메시지는 4개만 사용합니다. 메시지는 고객의 불안을 건드리고, CTA는 랜딩별 메인 행동 1개로 고정해 어느 제안이 반응했는지 분명히 봅니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>코드</th><th>메시지 타입</th><th>메시지 원형</th><th>연결 랜딩</th><th>메인 CTA</th></tr></thead><tbody>
+            <tr><td>M01</td><td>비용·일정 확인형</td><td>한국 성형을 고민 중이라면, 방한 전 예상 비용과 상담 절차를 먼저 확인하세요.</td><td>L01</td><td>비용·일정 확인하기</td></tr>
+            <tr><td>M02</td><td>1분 사전 체크형</td><td>내 눈·코·윤곽 고민이 한국 병원 상담 대상인지 1분만에 확인해보세요.</td><td>L02</td><td>1분 사전 체크 시작하기</td></tr>
+            <tr><td>M03</td><td>일본어 안심형</td><td>일본어 안내로 한국 성형 상담 전 필요한 내용을 정리해드립니다.</td><td>L03</td><td>LINE으로 상담 준비 시작</td></tr>
+            <tr><td>M04</td><td>의사 직접 검증형</td><td>후기만으로 결정하기 어렵다면, 한국 의료진 상담 전 필요한 정보를 먼저 정리하세요.</td><td>L02 또는 L04</td><td>내 고민 상담 가능성 확인</td></tr>
+          </tbody></table></div>
+          <div class="warning"><b>CTA 운영 원칙</b>하나의 랜딩에는 하나의 메인 CTA만 둡니다. 보조 CTA는 하단에만 제한적으로 배치하고, 성과 판단은 메인 CTA 기준으로 통일합니다.</div>
         </section>
 
+        
         <section class="section" id="flow">
-          <div class="section-head"><div class="kicker">06 / Flow Test</div><div class="section-title"><h2>Flow 비교: 앱 설치형 vs 웹 문진형 vs LINE 상담형</h2><p>현재 이뻐의 기본 Flow는 유지하되, 앱 설치 장벽을 확인하기 위해 대안 Flow를 반드시 함께 테스트해야 합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Flow</th><th>구조</th><th>장점</th><th>리스크</th><th>핵심 Metric</th></tr></thead><tbody><tr><td>F1 앱 설치형</td><td>LINE → 앱 설치 → 가입 → 문진</td><td>앱 회원 확보, 장기 CRM 가능</td><td>초기 설치·가입 장벽 큼</td><td>앱 실행률, 가입률, 문진 완료율</td></tr><tr><td>F2 웹 문진형</td><td>LINE → 웹 문진 → 예약 → 앱 설치</td><td>상담 의향을 빠르게 확인</td><td>앱 회원화는 후행 과제</td><td>문진 완료율, 예약률</td></tr><tr><td>F3 LINE 상담형</td><td>LINE → 간단 응답 → 상담 안내</td><td>가장 낮은 진입장벽</td><td>운영 수작업 증가</td><td>친구추가율, 상담 전환율</td></tr><tr><td>F4 직접 예약형</td><td>랜딩 → 예약 신청</td><td>고의향 고객 식별</td><td>차가운 고객에게는 부담</td><td>예약 완료율, 노쇼율</td></tr></tbody></table></div>
-          <div class="warning"><b>핵심 제언</b>앱 다운로드를 POC의 최종 성공 지표로 두면 안 됩니다. 일본 고객의 핵심 의향은 “앱 설치”가 아니라 “상담·문진·예약 의향”입니다.</div>
+          <div class="section-head"><div class="kicker">06 / Flow Test</div><div class="section-title"><h2>Flow 비교: 앱 설치형 vs LINE 상담형 + 웹 사전 체크형</h2><p>기본 검증 Flow는 앱 설치형입니다. LINE 상담형은 저마찰 비교군이며, 웹 사전 체크형은 앱 설치·가입 구간 이탈이 확인될 때 사용하는 대안 실험으로 배치합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Flow</th><th>역할</th><th>구조</th><th>사용 조건</th><th>핵심 Metric</th></tr></thead><tbody>
+            <tr><td>F1 앱 설치형</td><td>기본 검증 Flow</td><td>LINE → 앱 설치 → 가입 → 앱 문진 → 예약</td><td>1차 POC 기본 측정</td><td>앱 실행률, 가입률, 앱 문진 완료율</td></tr>
+            <tr><td>F2 LINE 상담형</td><td>저마찰 비교 Flow</td><td>LINE → 간단 응답 → CS 분류 → 상담 안내</td><td>가장 낮은 장벽에서 반응을 확인할 때</td><td>친구추가율, 응답률, 상담 전환율</td></tr>
+            <tr><td>F3 웹 사전 체크형</td><td>대안 실험 Flow</td><td>LINE/랜딩 → 웹 사전 체크 → 리드 분류 → 예약 또는 앱 설치</td><td>LINE 반응은 있으나 앱 설치·가입 이탈이 큰 경우</td><td>체크 시작률, 체크 완료율, 예약률</td></tr>
+            <tr><td>F4 직접 예약형</td><td>리타겟팅 Flow</td><td>문진 완료자/고의향 고객 → 상담 슬롯 예약</td><td>문진 완료·LINE 고관심자가 확보된 뒤</td><td>예약 완료율, 노쇼율</td></tr>
+          </tbody></table></div>
+          <div class="note"><b>웹 사전 체크의 위치</b>웹 사전 체크는 이번 POC의 주인공이 아닙니다. 앱 설치형 기본 Flow의 병목을 해석하기 위한 예비 장치이며, 3주차 이후 조건부로 투입합니다.</div>
         </section>
 
+        
+        <section class="section" id="execution">
+          <div class="section-head"><div class="kicker">07 / 1st POC Execution Matrix</div><div class="section-title"><h2>제언: 1차 POC는 이렇게 줄이는 것이 맞습니다</h2><p>전체 가설을 모두 실행하면 조합이 과도하게 늘어납니다. 1차 POC는 랜딩·메시지·CTA·Flow 변수를 줄여 “어떤 조합이 다음 단계 이동을 만드는지”만 확인하는 방식으로 설계합니다.</p></div></div>
+          <div class="quote">“Fit 유형은 사고 프레임이고, 랜딩·메시지·CTA·Flow는 실행 변수입니다. 1차 POC에서는 실행 변수를 줄이고, 전환 병목을 숫자로 확인합니다.”<small>초기 목표는 완벽한 캠페인 운영이 아니라, 반복 가능한 승자 조합을 찾는 것입니다.</small></div>
+          <div class="table-wrap"><table><thead><tr><th>항목</th><th>1차 권장 수량</th><th>실행 기준</th><th>비고</th></tr></thead><tbody>
+            <tr><td>랜딩 페이지</td><td><b>4개</b></td><td>L01 비용·일정 / L02 1분 체크 / L03 일본어 LINE / L04 앱 설치형</td><td>L05 예약형은 2차 리타겟팅용</td></tr>
+            <tr><td>메시지 타입</td><td><b>4개</b></td><td>M01 비용·일정 / M02 1분 체크 / M03 일본어 안심 / M04 의사 직접 검증</td><td>체크리스트형은 후순위</td></tr>
+            <tr><td>CTA 타입</td><td><b>5개</b></td><td>랜딩별 메인 CTA 1개로 고정</td><td>성과 판단은 메인 CTA 기준</td></tr>
+            <tr><td>광고 캠페인</td><td><b>3개</b></td><td>C01 메시지·랜딩 Fit / C02 Flow 병목 / C03 예약 리타겟팅</td><td>캠페인 목적 분리</td></tr>
+            <tr><td>광고 소재</td><td><b>13개 내외</b></td><td>C01 8개 + C02 3개 + C03 2개</td><td>정적 이미지와 짧은 영상 혼합</td></tr>
+            <tr><td>Tracking Event</td><td><b>8~9개</b></td><td>랜딩 유입, 완주, LINE 클릭, 친구추가, 앱 실행, 가입, 문진 완료, 예약</td><td>웹 사전 체크는 조건부 이벤트</td></tr>
+            <tr><td>운영 기간</td><td><b>4주</b></td><td>1주 세팅, 2주 집행, 3주 병목 개선, 4주 판단</td><td>3~5일 단위로 하위 조합 중단</td></tr>
+          </tbody></table></div>
+
+          <div class="table-wrap"><table><thead><tr><th>캠페인</th><th>목적</th><th>대상</th><th>연결 랜딩</th><th>핵심 지표</th></tr></thead><tbody>
+            <tr><td>C01<br/><b>Message Landing Fit</b></td><td>일본 콜드 오디언스가 어떤 메시지와 랜딩에 반응하는지 확인</td><td>신규 일본 오디언스</td><td>L01, L02, L03</td><td>랜딩 완주율, LINE 클릭률</td></tr>
+            <tr><td>C02<br/><b>Flow Bottleneck</b></td><td>앱 설치형 기본 Flow와 LINE 저마찰 Flow의 병목 비교</td><td>C01 유입자, 75% 완주자, LINE 클릭자</td><td>L02, L03, L04</td><td>앱 실행률, 가입률, 문진 완료율</td></tr>
+            <tr><td>C03<br/><b>Reservation Retargeting</b></td><td>문진 완료자 또는 고의향 고객의 상담 예약 전환 확인</td><td>문진 완료자, 앱 가입자, LINE 고관심자</td><td>L05</td><td>예약 완료율, 노쇼율</td></tr>
+          </tbody></table></div>
+
+          <div class="table-wrap"><table><thead><tr><th>광고 코드</th><th>캠페인</th><th>메시지</th><th>소재 형식</th><th>연결 랜딩</th><th>CTA</th></tr></thead><tbody>
+            <tr><td>AD01</td><td>C01</td><td>M01 비용·일정</td><td>정적 이미지</td><td>L01</td><td>비용·일정 확인하기</td></tr>
+            <tr><td>AD02</td><td>C01</td><td>M01 비용·일정</td><td>짧은 영상/Reels</td><td>L01</td><td>비용·일정 확인하기</td></tr>
+            <tr><td>AD03</td><td>C01</td><td>M02 1분 체크</td><td>정적 이미지</td><td>L02</td><td>1분 사전 체크 시작하기</td></tr>
+            <tr><td>AD04</td><td>C01</td><td>M02 1분 체크</td><td>짧은 영상/Reels</td><td>L02</td><td>1분 사전 체크 시작하기</td></tr>
+            <tr><td>AD05</td><td>C01</td><td>M03 일본어 안심</td><td>정적 이미지</td><td>L03</td><td>LINE으로 상담 준비 시작</td></tr>
+            <tr><td>AD06</td><td>C01</td><td>M03 일본어 안심</td><td>짧은 영상/Reels</td><td>L03</td><td>LINE으로 상담 준비 시작</td></tr>
+            <tr><td>AD07</td><td>C01</td><td>M04 의사 직접 검증</td><td>정적 이미지</td><td>L02</td><td>내 고민 상담 가능성 확인</td></tr>
+            <tr><td>AD08</td><td>C01</td><td>M04 의사 직접 검증</td><td>짧은 영상/Reels</td><td>L02</td><td>내 고민 상담 가능성 확인</td></tr>
+            <tr><td>AD09</td><td>C02</td><td>웹 사전 체크 예비</td><td>정적 이미지</td><td>L02</td><td>1분 사전 체크 시작하기</td></tr>
+            <tr><td>AD10</td><td>C02</td><td>앱 설치형 비교</td><td>정적 이미지</td><td>L04</td><td>앱에서 문진 작성하기</td></tr>
+            <tr><td>AD11</td><td>C02</td><td>LINE 상담형 비교</td><td>정적 이미지</td><td>L03</td><td>LINE으로 상담 준비 시작</td></tr>
+            <tr><td>AD12</td><td>C03</td><td>상담 슬롯 안내</td><td>정적 이미지</td><td>L05</td><td>온라인 상담 슬롯 예약하기</td></tr>
+            <tr><td>AD13</td><td>C03</td><td>상담 후 비용·일정 확인</td><td>정적 이미지</td><td>L05</td><td>상담 일정 확인하기</td></tr>
+          </tbody></table></div>
+
+          <div class="table-wrap"><table><thead><tr><th>필요 업무</th><th>업무 방법</th><th>담당 후보</th><th>산출물 Depth</th></tr></thead><tbody>
+            <tr><td>1. 실행 범위 확정</td><td>1차 POC에서 사용할 랜딩 4개, 메시지 4개, 캠페인 3개, 소재 13개를 확정합니다. 추가 아이디어는 2차 Backlog로 분리합니다.</td><td>전략/PM</td><td><b>POC Execution Matrix v1</b><br/>랜딩·메시지·캠페인·소재·CTA·Metric 1장 요약</td></tr>
+            <tr><td>2. 랜딩 기획·제작</td><td>L01~L04의 목적, 첫 화면 카피, 섹션 구조, 메인 CTA, 트래킹 위치를 정의하고 모바일 기준으로 제작합니다.</td><td>서비스기획/디자인/퍼블리싱</td><td><b>Landing Wireframe & URL Map</b><br/>4개 랜딩 와이어프레임, 최종 URL, 연결 CTA 포함</td></tr>
+            <tr><td>3. 메시지·CTA 카피 제작</td><td>M01~M04별 광고 카피, 랜딩 헤드라인, CTA 문구, LINE 후속 문구를 하나의 톤으로 정리합니다.</td><td>마케팅/일본어 검수</td><td><b>Message · CTA Copy Matrix</b><br/>한국어 원형, 일본어 카피, 금지 표현, CTA 문구 포함</td></tr>
+            <tr><td>4. 광고 캠페인 구조 세팅</td><td>C01~C03을 목적별로 분리하고, 광고 세트·광고·랜딩 URL·UTM을 매칭합니다.</td><td>퍼포먼스 마케팅</td><td><b>Campaign Build Sheet</b><br/>캠페인명, 광고세트명, 광고명, 예산, URL, UTM 포함</td></tr>
+            <tr><td>5. 소재 제작</td><td>AD01~AD13 기준으로 정적 이미지와 짧은 영상 소재를 제작합니다. 소재별 메시지와 CTA는 1개만 사용합니다.</td><td>콘텐츠/디자인</td><td><b>Creative Brief & Asset Package</b><br/>소재별 카피, 규격, 썸네일, 파일명 규칙 포함</td></tr>
+            <tr><td>6. UTM·URL 규칙</td><td>캠페인·광고세트·광고·메시지·랜딩을 구분할 수 있도록 URL 파라미터를 표준화합니다.</td><td>마케팅/데이터</td><td><b>Tracking URL Sheet</b><br/>utm_source, medium, campaign, content, landing_id, message_id 포함</td></tr>
+            <tr><td>7. 이벤트 트래킹 세팅</td><td>GA4/GTM으로 랜딩 유입, 스크롤, LINE 클릭을 잡고 앱 이벤트로 앱 실행·가입·문진 완료·예약을 확인합니다.</td><td>마케팅/개발</td><td><b>Event Spec & QA Sheet</b><br/>이벤트명, 발생 조건, 테스트 결과, 누락 여부 포함</td></tr>
+            <tr><td>8. LINE·앱 운영 준비</td><td>LINE 친구추가 이후 메시지, 앱 설치 QR/URL, 앱 문진 안내, 상담 예약 안내를 SOP화합니다.</td><td>CS/운영/PM</td><td><b>LINE · App Operation SOP</b><br/>친구추가 응대, 설치 안내, 문진 리마인드, 예약 안내문 포함</td></tr>
+            <tr><td>9. 대시보드·리포트</td><td>일자별·캠페인별 Funnel 수치를 한 곳에서 보고, 3~5일 단위로 하위 조합을 중단합니다.</td><td>마케팅/PM</td><td><b>Funnel Dashboard & Daily Report</b><br/>유입, 완주, LINE, 앱, 가입, 문진, 예약 지표 포함</td></tr>
+            <tr><td>10. 의사결정 기준 정리</td><td>GO/STOP/SCALE 기준을 사전에 정의해 감이 아니라 수치로 다음 액션을 결정합니다.</td><td>대표/전략/PM</td><td><b>Go · Stop · Scale Memo</b><br/>유지 조합, 중단 조합, 확장 예산, 개발 요청 포함</td></tr>
+          </tbody></table></div>
+          <div class="warning"><b>웹 사전 체크 관련 정리</b>웹 사전 체크는 위 실행 매트릭스의 일부로만 관리합니다. 별도 핵심 프로젝트가 아니라, 앱 설치·가입 이탈이 확인될 때 투입하는 조건부 산출물입니다.</div>
+        </section>
+
+        
         <section class="section" id="metrics">
-          <div class="section-head"><div class="kicker">07 / Tracking Metrics</div><div class="section-title"><h2>핵심 Metric Tracking 구조</h2><p>초기에는 GA4/GTM, 앱 이벤트, LINE 관리자 데이터, 수기 집계를 혼합해 구간별 전환율을 확인합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>순서</th><th>Metric</th><th>수집 방식</th><th>해석 질문</th></tr></thead><tbody><tr><td>1</td><td>랜딩페이지 유입수</td><td>GA4</td><td>광고가 유입을 만드는가?</td></tr><tr><td>2</td><td>Page Depth / 완주율</td><td>GA4 Scroll Event</td><td>랜딩 메시지를 충분히 읽는가?</td></tr><tr><td>3</td><td>LINE 클릭수</td><td>GTM Click Event</td><td>다음 행동 의향이 있는가?</td></tr><tr><td>4</td><td>LINE 친구추가수</td><td>LINE 관리자 / Webhook / 수기</td><td>CRM 접점으로 들어오는가?</td></tr><tr><td>5</td><td>앱 다운로드·실행수</td><td>Firebase / 앱 이벤트</td><td>앱 설치 장벽을 넘는가?</td></tr><tr><td>6</td><td>회원가입수</td><td>앱 이벤트 / 서버</td><td>회원화가 되는가?</td></tr><tr><td>7</td><td>문진표 작성·완료수</td><td>앱/웹 이벤트</td><td>상담 가능 리드가 만들어지는가?</td></tr><tr><td>8</td><td>예약수</td><td>앱/서버/운영 입력</td><td>상담 전환 의향이 존재하는가?</td></tr></tbody></table></div>
+          <div class="section-head"><div class="kicker">08 / Tracking Metrics</div><div class="section-title"><h2>핵심 Metric Tracking 구조</h2><p>초기에는 GA4/GTM, 앱 이벤트, LINE 관리자 데이터, 수기 집계를 혼합해 구간별 전환율을 확인합니다. 웹 사전 체크 이벤트는 조건부 보정 실험으로 별도 표시합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>순서</th><th>Metric</th><th>수집 방식</th><th>해석 질문</th></tr></thead><tbody>
+            <tr><td>1</td><td>랜딩페이지 유입수</td><td>GA4</td><td>광고가 유입을 만드는가?</td></tr>
+            <tr><td>2</td><td>Page Depth / 완주율</td><td>GA4 Scroll Event</td><td>랜딩 메시지를 충분히 읽는가?</td></tr>
+            <tr><td>3</td><td>LINE 클릭수</td><td>GTM Click Event</td><td>다음 행동 의향이 있는가?</td></tr>
+            <tr><td>4</td><td>LINE 친구추가수</td><td>LINE 관리자 / Webhook / 수기</td><td>CRM 접점으로 들어오는가?</td></tr>
+            <tr><td>5</td><td>앱 다운로드·실행수</td><td>Firebase / 앱 이벤트</td><td>앱 설치 장벽을 넘는가?</td></tr>
+            <tr><td>6</td><td>회원가입수</td><td>앱 이벤트 / 서버</td><td>회원화가 되는가?</td></tr>
+            <tr><td>7</td><td>앱 문진표 작성·완료수</td><td>앱 이벤트</td><td>앱 안에서 상담 준비가 이어지는가?</td></tr>
+            <tr><td>8</td><td>예약수</td><td>앱/서버/운영 입력</td><td>상담 전환 의향이 존재하는가?</td></tr>
+            <tr><td>9</td><td>웹 사전 체크 시작·완료수</td><td>웹 이벤트 / 폼 제출 로그</td><td>앱 설치 장벽 발생 시 우회 Flow가 작동하는가?</td></tr>
+          </tbody></table></div>
         </section>
 
+        
         <section class="section" id="playbook">
-          <div class="section-head"><div class="kicker">08 / 4 Week Playbook</div><div class="section-title"><h2>4주 실행 Playbook</h2><p>4주 안에 반응 조합을 찾고, 그 결과로 다음 달 개발·광고·운영 리소스 투입 여부를 판단합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>주차</th><th>목표</th><th>실행 항목</th><th>산출물</th></tr></thead><tbody><tr><td>1주차</td><td>실험 세팅</td><td>오디언스 5개, 메시지 5개, 랜딩 5개, CTA 3단계, GA/GTM 이벤트 설정</td><td>실험 매트릭스, 랜딩 초안, 대시보드</td></tr><tr><td>2주차</td><td>1차 집행</td><td>비용·일정형, 1분 체크형, 일본어 안심형 중심으로 광고 집행</td><td>일자별 유입·완주·LINE 클릭·문진 수치</td></tr><tr><td>3주차</td><td>병목 개선</td><td>완주율, LINE 클릭률, 앱 실행률, 문진 완료율 기준으로 랜딩·CTA·Flow 수정</td><td>개선안 A/B 테스트 결과</td></tr><tr><td>4주차</td><td>승자 조합 판단</td><td>상위 조합 1~2개 선정, 앱 설치형/웹 문진형/LINE 상담형 비교</td><td>다음 달 확장 또는 중단 의사결정안</td></tr></tbody></table></div>
-          <div class="note"><b>권장 우선순위</b>① 비용·일정 확인형 랜딩 ② 1분 사전 체크형 랜딩 ③ 일본어 안심 상담형 랜딩을 먼저 실행하고, 온라인 상담회 직접 예약형은 고의향 리타겟팅 또는 후속 실험으로 배치하는 것이 적합합니다.</div>
+          <div class="section-head"><div class="kicker">09 / 4 Week Playbook</div><div class="section-title"><h2>4주 실행 Playbook</h2><p>4주 안에 반응 조합을 찾고, 그 결과로 다음 달 개발·광고·운영 리소스 투입 여부를 판단합니다. 실행 기준은 07번 실행 매트릭스를 따릅니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>주차</th><th>목표</th><th>실행 항목</th><th>산출물</th></tr></thead><tbody>
+            <tr><td>1주차</td><td>실험 세팅</td><td>랜딩 4개, 메시지 4개, 캠페인 3개, 광고 소재 13개, CTA·UTM·이벤트 명세를 확정합니다.</td><td>POC Execution Matrix, Landing Wireframe, Campaign Build Sheet, Event Spec</td></tr>
+            <tr><td>2주차</td><td>1차 집행</td><td>C01 메시지·랜딩 Fit 캠페인을 우선 집행하고, C02 앱 설치형·LINE 상담형 비교를 세팅합니다.</td><td>일자별 유입·완주·LINE 클릭·친구추가·앱 실행·가입·앱 문진 수치</td></tr>
+            <tr><td>3주차</td><td>병목 개선</td><td>하위 조합을 중단하고 상위 조합에 예산을 이동합니다. 앱 설치·가입 이탈이 확인될 경우에만 웹 사전 체크를 투입합니다.</td><td>병목 진단 리포트, 웹 사전 체크 조건부 투입 여부, 수정 랜딩·소재 리스트</td></tr>
+            <tr><td>4주차</td><td>승자 조합 판단</td><td>상위 1~2개 조합을 선정하고, C03 예약 리타겟팅의 예약 가능성을 확인합니다.</td><td>Go/Stop/Scale Memo, 다음 달 확장안, 개발·운영 요청사항</td></tr>
+          </tbody></table></div>
+          <div class="note"><b>권장 우선순위</b>① 비용·일정 확인형 ② 1분 사전 체크형 ③ 일본어 안심 LINE형을 먼저 실행합니다. 온라인 상담 예약형은 고의향 리타겟팅으로 후행 배치하고, 웹 사전 체크는 앱 설치 병목이 확인될 때만 조건부 투입합니다.</div>
         </section>
 
+        
         <section class="section" id="proposal">
-          <div class="section-head"><div class="kicker">09 / Additional Proposal</div><div class="section-title"><h2>추가로 고려해야 할 요소</h2><p>실행 전 아래 요소를 반영하면 실험 결과의 해석 오류와 운영 리스크를 줄일 수 있습니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>고려 요소</th><th>왜 중요한가</th><th>반영 제안</th></tr></thead><tbody><tr><td>앱 설치 장벽</td><td>초기 고객에게 앱 설치와 가입은 너무 큰 요구일 수 있음</td><td>웹 문진형 Flow를 반드시 병행 테스트</td></tr><tr><td>LINE 추적 한계</td><td>GA만으로 친구추가를 직접 확인하기 어려움</td><td>LINE 관리자 데이터와 일자별 수기 집계를 병행</td></tr><tr><td>휴민트/디지털 유입 분리</td><td>뷰티카사 유입과 자체 디지털 유입이 섞이면 판단 불가</td><td>source 값을 beautycasa, meta_jp, organic_jp 등으로 분리</td></tr><tr><td>의료광고 표현</td><td>효과 보장, 진단, 최저가, 전후사진 중심 표현은 리스크가 큼</td><td>“사전 정보 확인”, “상담 준비”, “예상 범위” 표현 사용</td></tr><tr><td>개인정보·민감정보</td><td>사진, 시술 고민, 상담 내용은 민감도 높은 정보</td><td>수집·이용·제3자 제공·삭제 요청 프로세스 명시</td></tr><tr><td>예약금 SOP</td><td>상담 예약과 수술 예약금의 성격이 다르면 분쟁 가능성 발생</td><td>예약금 성격, 환불, 취소, 병원 귀속 여부를 문서화</td></tr><tr><td>상담 품질</td><td>문진 완료자가 있어도 상담 품질이 낮으면 예약 전환이 안 됨</td><td>상담 스크립트, 상담 요약 리포트, 24시간 후속 메시지 준비</td></tr><tr><td>중단 기준</td><td>실패 조합을 오래 끌면 비용과 시간이 낭비됨</td><td>3~5일 단위로 하위 조합 중단, 상위 조합에 예산 이동</td></tr></tbody></table></div>
+          <div class="section-head"><div class="kicker">10 / Additional Proposal</div><div class="section-title"><h2>추가로 고려해야 할 요소</h2><p>실행 전 아래 요소를 반영하면 실험 결과의 해석 오류와 운영 리스크를 줄일 수 있습니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>고려 요소</th><th>왜 중요한가</th><th>반영 제안</th></tr></thead><tbody><tr><td>앱 설치 장벽</td><td>초기 고객에게 앱 설치와 가입은 너무 큰 요구일 수 있음</td><td>웹 사전 체크는 앱 설치 이탈 시 조건부 보정 실험으로 투입</td></tr><tr><td>LINE 추적 한계</td><td>GA만으로 친구추가를 직접 확인하기 어려움</td><td>LINE 관리자 데이터와 일자별 수기 집계를 병행</td></tr><tr><td>휴민트/디지털 유입 분리</td><td>뷰티카사 유입과 자체 디지털 유입이 섞이면 판단 불가</td><td>source 값을 beautycasa, meta_jp, organic_jp 등으로 분리</td></tr><tr><td>의료광고 표현</td><td>효과 보장, 진단, 최저가, 전후사진 중심 표현은 리스크가 큼</td><td>“사전 정보 확인”, “상담 준비”, “예상 범위” 표현 사용</td></tr><tr><td>개인정보·민감정보</td><td>사진, 시술 고민, 상담 내용은 민감도 높은 정보</td><td>수집·이용·제3자 제공·삭제 요청 프로세스 명시</td></tr><tr><td>예약금 SOP</td><td>상담 예약과 수술 예약금의 성격이 다르면 분쟁 가능성 발생</td><td>예약금 성격, 환불, 취소, 병원 귀속 여부를 문서화</td></tr><tr><td>상담 품질</td><td>문진 완료자가 있어도 상담 품질이 낮으면 예약 전환이 안 됨</td><td>상담 스크립트, 상담 요약 리포트, 24시간 후속 메시지 준비</td></tr><tr><td>중단 기준</td><td>실패 조합을 오래 끌면 비용과 시간이 낭비됨</td><td>3~5일 단위로 하위 조합 중단, 상위 조합에 예산 이동</td></tr></tbody></table></div>
         </section>
 
         <section class="section" id="decision">
-          <div class="section-head"><div class="kicker">10 / Decision Rule</div><div class="section-title"><h2>4주 후 의사결정 기준</h2><p>실험 종료 후에는 느낌이 아니라 아래 기준으로 확장, 보류, 전환을 판단합니다.</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>결과</th><th>해석</th><th>다음 액션</th></tr></thead><tbody><tr><td>LINE 클릭 높음, 문진 낮음</td><td>관심은 있으나 문진 또는 앱 장벽이 높음</td><td>문진 축소, 웹 문진형 우회</td></tr><tr><td>문진 완료 높음, 예약 낮음</td><td>상담 제안과 신뢰 요소가 부족</td><td>상담회 가치, 의료진 설명, 일정 안내 강화</td></tr><tr><td>앱 설치형 낮고 웹 문진형 높음</td><td>앱 설치가 초기 병목</td><td>앱은 예약 후 관리 도구로 후행 배치</td></tr><tr><td>비용·일정형 우수</td><td>실제 방한 검토 고객군 존재</td><td>리타겟팅과 상담 예약 Flow 확장</td></tr><tr><td>모든 조합 저조</td><td>오디언스, 메시지, 제안 자체 재검토 필요</td><td>소재·타깃·랜딩 메시지 재설계</td></tr></tbody></table></div>
+          <div class="section-head">
+            <div class="kicker">11 / Decision Rule</div>
+            <div class="section-title">
+              <h2>4주 후 의사결정 기준</h2>
+              <p>4주 실험 종료 후에는 “좋아 보인다/안 좋아 보인다”가 아니라, 아래 목록을 기준으로 다음 달 실행 방향을 결정합니다. 핵심은 승자 조합을 찾는 것뿐 아니라, 어떤 병목 때문에 실패했는지까지 분리해서 판단하는 것입니다.</p>
+            </div>
+          </div>
+
+          <div class="quote">4주 후 의사결정은 “확장할 조합”, “보완할 병목”, “중단할 가설”, “개발로 넘길 요구사항”을 분리해서 판단합니다.<small>판단 단위: 캠페인 전체가 아니라 랜딩 × 메시지 × CTA × Flow 조합</small></div>
+
+          <div class="criteria-grid">
+            <div class="criteria-card"><b>01. 반응 존재 여부</b><p>일본 고객이 랜딩을 읽고, LINE 또는 앱/문진 단계로 이동하는 최소 반응이 확인되었는가?</p></div>
+            <div class="criteria-card"><b>02. 병목 위치</b><p>이탈이 랜딩, LINE, 앱 설치, 가입, 문진, 예약 중 어느 단계에서 발생했는가?</p></div>
+            <div class="criteria-card"><b>03. 다음 액션</b><p>확장, 보완, 중단, 개발 요청 중 어떤 의사결정으로 연결할 것인가?</p></div>
+          </div>
+
+          <div class="decision-list">
+            <div class="decision-item">
+              <span class="decision-tag go">GO</span>
+              <h3>1. 확장해야 하는 경우</h3>
+              <ul>
+                <li>랜딩 완주율과 LINE 클릭률이 동시에 양호하고, 특정 메시지·랜딩 조합에서 반복 반응이 확인됩니다.</li>
+                <li>LINE 친구추가 이후 앱 실행, 가입, 앱 문진 작성 중 최소 한 단계 이상이 의미 있게 발생합니다.</li>
+                <li>비용·일정 확인형 또는 1분 사전 체크형에서 문진 완료자나 상담 희망자가 실제로 발생합니다.</li>
+                <li>상위 1~2개 조합이 나머지 조합 대비 명확히 우수합니다.</li>
+                <li><b>다음 액션:</b> 상위 조합에 예산을 집중하고, C03 예약 리타겟팅과 상담 슬롯 운영을 본격화합니다.</li>
+              </ul>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-tag hold">FIX</span>
+              <h3>2. 보완 후 재실험해야 하는 경우</h3>
+              <ul>
+                <li>광고 클릭은 있으나 랜딩 완주율이 낮습니다. 이 경우 메시지와 랜딩 첫 화면의 기대값이 어긋났을 가능성이 큽니다.</li>
+                <li>랜딩 완주는 있으나 LINE 클릭이 낮습니다. 이 경우 CTA 위치, 버튼 문구, 신뢰 요소, 상담 이득 제시가 부족할 수 있습니다.</li>
+                <li>LINE 클릭과 친구추가는 있으나 앱 다운로드 또는 가입에서 급격히 이탈합니다. 이 경우 앱 설치 장벽을 별도 병목으로 봐야 합니다.</li>
+                <li>앱 가입은 있으나 문진 완료가 낮습니다. 이 경우 문진 문항 수, 사진 요구, 개인정보 부담, 안내 문구를 줄여야 합니다.</li>
+                <li><b>다음 액션:</b> 문제 구간을 1개만 선택해 수정하고, 같은 오디언스·예산 조건에서 3~5일 재실험합니다.</li>
+              </ul>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-tag stop">STOP</span>
+              <h3>3. 중단해야 하는 경우</h3>
+              <ul>
+                <li>충분한 유입을 확보했는데도 랜딩 완주, LINE 클릭, 앱 실행, 문진 시작 중 어떤 의미 있는 행동도 발생하지 않습니다.</li>
+                <li>소재를 바꿔도 동일 메시지 타입에서 반복적으로 반응이 낮습니다.</li>
+                <li>예약형 CTA를 콜드 유입에 바로 노출했을 때 반응이 거의 없고, 중간 CTA로도 회복되지 않습니다.</li>
+                <li>의사 직접 상담, 일본어 안심, 비용·일정 확인 등 핵심 가치 제안 중 특정 제안이 일관되게 무반응입니다.</li>
+                <li><b>다음 액션:</b> 해당 메시지·랜딩·CTA 조합은 중단하고, 타깃 또는 문제 정의를 다시 잡습니다.</li>
+              </ul>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-tag scale">SCALE</span>
+              <h3>4. 개발·운영 리소스를 투입해야 하는 경우</h3>
+              <ul>
+                <li>문진 완료 또는 예약 희망자가 실제로 발생해, 단순 광고 반응이 아니라 상담 운영 수요가 확인됩니다.</li>
+                <li>특정 Flow에서 반복적으로 전환이 발생해, 해당 Flow를 표준 프로세스로 만들 근거가 생깁니다.</li>
+                <li>앱 설치형이 작동하면 앱 문진·상담예약·푸시알림·CRM 이벤트 연동을 우선 개발합니다.</li>
+                <li>LINE 상담형이 작동하면 LINE 자동응답, 상담 스크립트, 상담원 배정, 후속 메시지 SOP를 우선 고도화합니다.</li>
+                <li>웹 사전 체크형이 앱 설치형보다 우수하면, 앱은 첫 접점이 아니라 상담 가능 리드 확인 후 관리 도구로 후행 배치합니다.</li>
+                <li><b>다음 액션:</b> 개발 백로그, 운영 SOP, 상담 인력, 병원 일정 슬롯을 함께 확정합니다.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>관찰 결과</th><th>해석</th><th>의사결정</th><th>다음 액션</th></tr></thead>
+              <tbody>
+                <tr><td>랜딩 유입은 있으나 완주율 낮음</td><td>광고 메시지와 랜딩 첫 화면의 기대값 불일치</td><td>보완</td><td>히어로 카피, 첫 CTA, 신뢰 요소 재작성</td></tr>
+                <tr><td>완주율은 있으나 LINE 클릭 낮음</td><td>관심은 있으나 행동 이유가 약함</td><td>보완</td><td>CTA 문구, 버튼 위치, 상담 이득, FAQ 강화</td></tr>
+                <tr><td>LINE 클릭 높음, 앱 설치 낮음</td><td>앱 설치가 초기 병목</td><td>Flow 전환 검토</td><td>LINE 상담형 강화, 웹 사전 체크 조건부 투입</td></tr>
+                <tr><td>앱 설치는 있으나 가입 낮음</td><td>가입 부담 또는 신뢰 부족</td><td>보완</td><td>가입 필요 이유, 개인정보 안내, 간편 가입 개선</td></tr>
+                <tr><td>가입은 있으나 앱 문진 완료 낮음</td><td>문진이 길거나 민감정보 부담이 큼</td><td>보완</td><td>문항 축소, 사진 제출 후순위화, 단계형 문진 적용</td></tr>
+                <tr><td>문진 완료 높음, 예약 낮음</td><td>상담 가치·의료진 신뢰·일정 제안 부족</td><td>보완/리타겟팅</td><td>상담회 가치, 의사 직접 설명, 예약 슬롯 안내 강화</td></tr>
+                <tr><td>비용·일정형 우수</td><td>실제 방한 검토 고객군 존재</td><td>확장</td><td>L01 예산 확대, C03 예약 리타겟팅 연결</td></tr>
+                <tr><td>1분 사전 체크형 우수</td><td>가벼운 자기진단형 제안이 작동</td><td>확장</td><td>사전 체크 문항 고도화, 앱 문진 전환 설계</td></tr>
+                <tr><td>일본어 안심 LINE형 우수</td><td>언어·상담 불안 해소가 핵심 반응 요인</td><td>확장</td><td>LINE 응대 SOP, 일본어 상담 메시지, 상담원 배정 강화</td></tr>
+                <tr><td>모든 조합 저조</td><td>타깃, 문제, 제안, 채널 중 하나 이상 재정의 필요</td><td>중단/재설계</td><td>오디언스 재설계, 메시지 리서치, 소재 리빌드</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="warning"><b>4주차 회의에서 반드시 결정할 것</b>① 다음 달 확장할 랜딩·메시지 조합 ② 중단할 조합 ③ 앱 설치형 유지 여부 ④ LINE 상담형 강화 여부 ⑤ 웹 사전 체크 투입 여부 ⑥ 개발 백로그 반영 항목 ⑦ 병원 상담 슬롯과 운영 인력 투입 여부를 확정합니다.</div>
           <div class="risk"><b>최종 리스크 메모</b>본 문서는 내부 전략 검토용입니다. 외부 공유 전 의료광고, 개인정보, 민감정보, 의료 상담 책임, 결제·환불 표현을 별도 검토해야 합니다.</div>
         </section>
 
-        <div class="footer"><b>Mediheim / IPPEO Strategy Gate · 06 Japan POC</b>게이트 페이지는 전략 카드형 인덱스, 세부 페이지는 LNB 탐색형 레이아웃으로 역할을 분리했습니다.</div>
+        <div class="footer"><b>Mediheim / IPPEO Strategy Gate · 06 Japan POC</b>게이트 페이지는 전략 카드형 인덱스, 세부 페이지는 LNB 탐색형 레이아웃으로 역할을 분리하고, 1차 POC 실행 매트릭스와 4주 후 의사결정 기준을 상세화했습니다.</div>
       </div>
     </div>
   </main>
