@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Track 1 · 이뻐 온라인 상담회형 POC 실행 Playbook</title>
+  <meta name="description" content="복수 병원이 참여하는 온라인 상담회를 실제 운영 중심으로 진행하고, 디지털 모객 기반 상담 참석·상담 완료·예약금 지불·수술예약 전환을 검증하는 Track 1 POC 실행안" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root{
+      --bg:#f6f3ee;--paper:#fffdf8;--ink:#141414;--muted:#666660;--line:#dfd8cb;--soft:#eee8dc;--soft2:#f9f6f0;
+      --accent:#22364a;--accent2:#55708c;--blue-bg:#edf4fb;--green-bg:#edf7f1;--green-line:#cde5d7;--amber-bg:#fff6e6;--amber-line:#ecd39f;--red-bg:#fff0ef;--red-line:#efc4c0;
+      --radius:20px;--shadow:0 18px 50px rgba(25,20,12,.08);--shadow-sm:0 12px 30px rgba(25,20,12,.055);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.68;word-break:keep-all;letter-spacing:-.025em;font-size:18px} a{color:inherit;text-decoration:none}
+    .topbar{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(246,243,238,.9);border-bottom:1px solid rgba(20,20,20,.08)}
+    .topbar-inner{max-width:1440px;margin:auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;font-size:19px;letter-spacing:-.035em}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav a{font-size:14px;color:#3f3f3f;padding:8px 11px;border-radius:999px;border:1px solid transparent}.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.7)}
+    .wrap{max-width:1440px;margin:auto;padding:34px 28px 82px}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:24px;align-items:stretch;margin:18px 0 28px}.hero-card,.panel,.section,.lnb,.mini-card,.metric-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-card{padding:44px 44px 38px;position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;right:-120px;top:-140px;width:360px;height:360px;border-radius:50%;background:rgba(34,54,74,.09)}.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff} h1{font-size:54px;line-height:1.06;margin:26px 0 18px;letter-spacing:-.055em} h2{font-size:34px;line-height:1.22;margin:0 0 16px;letter-spacing:-.045em} h3{font-size:24px;margin:0 0 12px;letter-spacing:-.04em} h4{font-size:20px;margin:0 0 8px;letter-spacing:-.035em} p{margin:0 0 14px;color:#292929}.lead{font-size:22px;color:#2b2b2b;max-width:860px;font-weight:650;line-height:1.55}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:999px;background:var(--soft2);border:1px solid var(--line);font-size:14px;font-weight:800;color:#333}.hero-side{padding:26px;display:flex;flex-direction:column;gap:14px}.decision-box{background:var(--accent);color:#fff;border-radius:18px;padding:24px}.decision-box p{color:rgba(255,255,255,.86)}.decision-box strong{display:block;font-size:28px;letter-spacing:-.04em;margin-bottom:8px}.warning{background:#fff8e7;border:1px solid #ead79f;border-radius:18px;padding:20px;color:#3c3119}.warning strong{display:block;margin-bottom:8px;color:#2e2412}.grid-layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;align-items:start}.lnb{position:sticky;top:86px;padding:18px;max-height:calc(100vh - 110px);overflow:auto}.lnb .title{font-size:13px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:4px 0 12px}.lnb a{display:block;padding:10px 12px;border-radius:12px;color:#383838;font-size:15px;font-weight:800}.lnb a:hover{background:var(--soft2)}.lnb .help{font-size:13px;color:var(--muted);line-height:1.58;margin-top:14px;padding:12px;border-top:1px solid var(--line)}.content{display:flex;flex-direction:column;gap:24px}.section{padding:34px}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px}.num{font-size:13px;font-weight:900;color:#fff;background:#111;border-radius:999px;padding:7px 10px;letter-spacing:.08em}.subtitle{color:var(--muted);font-size:16px;max-width:740px}.quote{background:#fff;border:1px solid var(--line);border-left:5px solid #111;border-radius:16px;padding:22px;font-size:22px;font-weight:900;line-height:1.55;letter-spacing:-.04em;box-shadow:var(--shadow-sm);margin:18px 0}.flow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.flow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 11px;font-size:14px;font-weight:900;box-shadow:0 8px 22px rgba(20,20,20,.04)}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}.mini-card{padding:20px;box-shadow:var(--shadow-sm)}.mini-card .label{display:inline-flex;background:#111;color:#fff;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:900;margin-bottom:13px;text-transform:uppercase;letter-spacing:.05em}.mini-card p{color:#4b4b46;font-size:15.5px}.mini-card ul{margin:10px 0 0;padding-left:18px;color:#3a3a35;font-size:15.5px}.mini-card li{margin:5px 0}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.metric-card{padding:18px;box-shadow:var(--shadow-sm)}.metric-card b{font-size:24px;letter-spacing:-.05em;display:block;margin-bottom:6px}.metric-card span{font-size:14px;color:var(--muted);font-weight:700}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);margin:16px 0} table{width:100%;border-collapse:collapse;min-width:880px;background:#fff;font-size:15.5px} th,td{padding:14px 15px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left} th{background:#111;color:#fff;font-weight:900;font-size:14px;letter-spacing:-.01em} tr:last-child td{border-bottom:0} td:first-child{font-weight:900;color:#111}.tag{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;background:var(--soft2);border:1px solid var(--line);margin:2px}.good{background:var(--green-bg);border-color:var(--green-line)}.bad{background:var(--red-bg);border-color:var(--red-line)}.amber{background:var(--amber-bg);border-color:var(--amber-line)}.note{background:#f8fbff;border:1px solid #d8e5f2;border-radius:18px;padding:20px;margin:18px 0}.note strong{display:block;margin-bottom:8px}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 15px;font-size:15px;font-weight:750;box-shadow:var(--shadow-sm)}.footer{color:#777;margin-top:36px;padding:26px 0;border-top:1px solid var(--line);font-size:14px}.print-only{display:none}
+    @media(max-width:1100px){.hero,.grid-layout{grid-template-columns:1fr}.lnb{position:relative;top:auto;max-height:none}.cards,.cards.two{grid-template-columns:1fr 1fr}.metric-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:720px){body{font-size:16px}.topbar-inner{padding:14px 18px}.nav{display:none}.wrap{padding:24px 16px 62px}.hero-card{padding:30px 24px}.hero-side{padding:20px}h1{font-size:40px}.lead{font-size:18px}.section{padding:24px 18px}.section-head{display:block}.cards,.cards.two,.metric-grid,.checklist{grid-template-columns:1fr}table{font-size:14px}.quote{font-size:18px}} @media print{.topbar,.lnb{display:none}.wrap{max-width:none;padding:16px}.grid-layout{display:block}.section,.hero-card,.panel{box-shadow:none}.print-only{display:block}}
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><small>IPPEO POC</small>Track 1 · 온라인 상담회형</a>
+      <nav class="nav">
+        <a href="#definition">정의</a><a href="#hypothesis">가설</a><a href="#scenario">시나리오</a><a href="#metric">지표</a><a href="#playbook">실행</a><a href="#decision">판단</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">Medihim · IPPEO · Track 1</span>
+        <h1>이뻐 온라인 상담회형 POC<br/>실행 Playbook</h1>
+        <p class="lead">복수 병원이 참여하는 온라인 상담회를 실제 운영 중심으로 열고, 메디힘의 디지털 모객이 상담회 신청·당일 참석·원장상담·실장상담·예약금 지불·수술예약까지 이어지는지 검증하는 실행안입니다.</p>
+        <div class="hero-meta"><span class="pill">실제 운영형 POC</span><span class="pill">복수 병원 상담회</span><span class="pill">디지털 모객 파이프라인</span><span class="pill">예약금 전환 Metric</span></div>
+      </div>
+      <aside class="hero-side panel">
+        <div class="decision-box"><strong>핵심 질문</strong><p>온라인 상담회라는 명확한 이벤트를 앞세웠을 때, 메디힘이 직접 디지털로 유효 상담 참석자를 만들고 예약금·수술예약 후보까지 전환시킬 수 있는가?</p></div>
+        <div class="warning"><strong>Track 1의 원칙</strong>상담회형은 Pretotype만으로 진행하기 어렵습니다. 참여 병원, 상담 일정, 의료진, 슬롯, 통역, 원장상담·실장상담 Flow가 실제로 준비되어야 합니다.</div>
+        <div class="note"><strong>North Star</strong>디지털 모객 기반 온라인 상담 완료자 중 예약금 지불 고객 수</div>
+      </aside>
+    </section>
+
+    <div class="grid-layout">
+      <aside class="lnb">
+        <div class="title">Execution Index</div>
+        <a href="#definition">01. POC 정의</a>
+        <a href="#principle">02. 실행 원칙</a>
+        <a href="#hypothesis">03. 핵심 가설</a>
+        <a href="#scenario">04. 실제 중심 시나리오</a>
+        <a href="#funnel">05. 상담회 Funnel</a>
+        <a href="#metric">06. 핵심 Metric</a>
+        <a href="#attributes">07. 상담회 필수 속성</a>
+        <a href="#acquisition">08. 모객 파이프라인</a>
+        <a href="#noshow">09. 참석·노쇼 방어</a>
+        <a href="#sop">10. 상담 운영 SOP</a>
+        <a href="#deposit">11. 예약금·수술예약 전환</a>
+        <a href="#dashboard">12. Dashboard</a>
+        <a href="#playbook">13. 4주 실행계획</a>
+        <a href="#decision">14. 의사결정 기준</a>
+        <div class="help">Track 1은 현재 이뻐 POC의 메인입니다. 신청자 수가 아니라 상담 완료·예약금 전환·오프라인 상담회 대비 효율을 봅니다.</div>
+      </aside>
+      <div class="content">
+        <section class="section" id="definition">
+          <div class="section-head"><div><span class="num">01</span><h2>POC 정의</h2><p class="subtitle">이뻐 온라인 상담회형 POC는 온라인 상담회 매체와 그 뒤의 디지털 모객 파이프라인을 함께 검증합니다.</p></div></div>
+          <div class="quote">본 POC는 이뻐 단독 브랜드 홍보가 아니라, 복수 병원이 참여하는 온라인 상담회를 디지털 모객으로 성립시키고 예약금 전환까지 연결할 수 있는지 검증하는 실증 프로젝트입니다.</div>
+          <div class="cards three">
+            <div class="mini-card"><span class="label">Media</span><h3>온라인 상담회 매체</h3><p>특정 기간, 참여 병원, 의료진, 상담 슬롯, 일본어 지원을 전면에 내세운 이벤트형 상담 상품입니다.</p></div>
+            <div class="mini-card"><span class="label">Pipeline</span><h3>백엔드 모객 파이프라인</h3><p>광고·콘텐츠·LINE·리마인드·신청폼을 통해 상담회 참석 가능성이 있는 오디언스를 직접 모집합니다.</p></div>
+            <div class="mini-card"><span class="label">Conversion</span><h3>예약금·수술예약 전환</h3><p>원장상담 후 실장상담, 상담 리포트, 견적·예약금 안내를 통해 실제 매출 후보를 만듭니다.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="principle">
+          <div class="section-head"><div><span class="num">02</span><h2>실행 원칙</h2><p class="subtitle">상담회형은 고객 약속이 구체적이기 때문에 실제 중심으로 설계해야 합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>원칙</th><th>의미</th><th>실행 기준</th></tr></thead><tbody>
+            <tr><td>실제 병원 확정</td><td>참여 병원과 의료진은 홍보 전 확정되어야 합니다.</td><td>병원명, 진료과목, 담당자, 상담 가능 시간 확인</td></tr>
+            <tr><td>진료과목 분산</td><td>복수 병원은 비교 대상이 아니라 상담회 부스입니다.</td><td>눈·코, 피부, 모발, 치과 등 겹치지 않는 카테고리 중심 구성</td></tr>
+            <tr><td>복수 상담 허용</td><td>고객은 본인 니즈에 맞는 병원에 복수 신청할 수 있어야 합니다.</td><td>1인 다중 병원 신청 가능 UX</td></tr>
+            <tr><td>연락 가능성 선확보</td><td>6월처럼 상담 후 연락두절이 발생하지 않도록 LINE을 확보합니다.</td><td>신청 완료 조건에 LINE 친구확정/응답 확인 포함</td></tr>
+            <tr><td>원장→실장 연결</td><td>예약금 전환은 원장상담 후 실장상담이 끊기지 않아야 발생합니다.</td><td>상담 직후 실장상담 연결 SOP</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="hypothesis">
+          <div class="section-head"><div><span class="num">03</span><h2>핵심 가설</h2><p class="subtitle">선행지표와 후행지표를 연결해 “무엇을 하면 어떤 결과가 좋아질 것인가”를 검증합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>가설 유형</th><th>검증 가설</th><th>선행지표</th><th>후행지표</th><th>실행하면 좋아질 것</th></tr></thead><tbody>
+            <tr><td>시장가설</td><td>일본 고객은 복수 병원이 참여하는 한국 미용의료 온라인 상담회에 반응한다.</td><td>CTR, 랜딩 완주율, 상담회 신청률</td><td>신청자 수, 유효 상담 완료수</td><td>특정 기간·참여 병원·일본어 상담 가능성을 명확히 제시하면 신청률이 오른다.</td></tr>
+            <tr><td>고객가설</td><td>고객은 병원 비교가 아니라 관심 진료과목별 상담 부스에 복수 신청한다.</td><td>병원 카드 클릭수, 진료과목 선택수, 1인당 선택 병원 수</td><td>복수 신청률, 병원별 상담 완료수</td><td>병원 카드를 비교표가 아니라 상담 부스처럼 구성하면 복수 신청률이 오른다.</td></tr>
+            <tr><td>채널가설</td><td>메디힘은 디지털 채널로 상담회 신청자를 직접 모집할 수 있다.</td><td>CPM, CPC, 신청 CPA</td><td>상담 완료 CPA, 예약금 고객 획득비용</td><td>신청 CPA가 낮은 채널·소재에 예산을 집중하면 유효 상담 완료 CPA가 낮아진다.</td></tr>
+            <tr><td>제안가설</td><td>상시 상담보다 특정 기간 온라인 상담회 제안이 더 높은 전환을 만든다.</td><td>CTA 클릭률, 슬롯 선택률</td><td>참석률, 상담 완료율</td><td>“7월 온라인 상담회 사전 신청”처럼 기간과 슬롯을 보여주면 참석률이 오른다.</td></tr>
+            <tr><td>참석가설</td><td>시간 선택과 LINE 리마인드를 거치면 노쇼가 줄어든다.</td><td>슬롯 선택률, LINE 친구확정률, 리마인드 확인률</td><td>참석률, 노쇼율</td><td>D-1/D-day 리마인드를 표준화하면 참석률이 오른다.</td></tr>
+            <tr><td>결제가설</td><td>온라인 상담 후에도 신뢰와 후속 안내가 있으면 예약금 지불이 발생한다.</td><td>실장상담 완료율, 예약금 안내 도달률</td><td>예약금 지불률, 수술 예약률</td><td>상담 리포트·견적 요약·환불 조건을 명확히 제공하면 결제 이탈이 줄어든다.</td></tr>
+            <tr><td>운영가설</td><td>이뻐는 통역, STT, 리포트, 후속 전환까지 운영할 수 있다.</td><td>상담 정시율, STT 저장률, 리포트 생성률</td><td>환자 만족도, 병원 만족도, 재참여 의향</td><td>상담 로그와 리포트 템플릿을 표준화하면 병원 만족도가 오른다.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="scenario">
+          <div class="section-head"><div><span class="num">04</span><h2>실제 중심 시나리오</h2><p class="subtitle">상담회형은 Pretotype이 아니라 작게라도 실제로 열리는 상담회 POC로 설계합니다.</p></div></div>
+          <div class="cards">
+            <div class="mini-card"><span class="label">F1 · Main</span><h3>복수 병원 온라인 상담회</h3><p>2~4개 병원이 참여하고, 고객이 관심 진료과목별로 복수 상담을 신청합니다.</p><ul><li>핵심: 디지털 모객 → 참석 → 상담 완료</li><li>Metric: 복수 신청률, 참석률, 상담 완료율, 예약금 지불률</li></ul></div>
+            <div class="mini-card"><span class="label">F2 · Focus</span><h3>단일 병원 집중 상담회</h3><p>운영 부담이 크면 특정 병원 1곳으로 먼저 상담회 제안과 참석률을 검증합니다.</p><ul><li>핵심: 병원명·일정·의료진 제안 반응</li><li>Metric: 신청 CPA, 참석률, 상담 완료율</li></ul></div>
+            <div class="mini-card"><span class="label">F3 · Defense</span><h3>리마인드 강화 시나리오</h3><p>LINE 친구확정, D-1/D-day 리마인드, 상담 후 24시간 후속 연락으로 노쇼와 연락두절을 방어합니다.</p><ul><li>핵심: 6월 연락두절 리스크 보정</li><li>Metric: LINE 확정률, 연락 성공률</li></ul></div>
+          </div>
+          <div class="flow"><span>참여 병원 확정</span><span>상담회 일정 확정</span><span>병원별 슬롯 확보</span><span>디지털 모객</span><span>참가 신청</span><span>복수 병원 선택</span><span>LINE 확정</span><span>사전 문진</span><span>당일 참석</span><span>원장상담</span><span>실장상담</span><span>예약금 안내</span><span>예약금/수술예약</span></div>
+        </section>
+
+        <section class="section" id="funnel">
+          <div class="section-head"><div><span class="num">05</span><h2>상담회 Funnel 설계</h2><p class="subtitle">단순 신청이 아니라 상담회 참석과 예약금 전환까지 하나의 Funnel로 추적합니다.</p></div></div>
+          <div class="flow"><span>디지털 노출</span><span>상담회 랜딩 유입</span><span>참가 신청</span><span>병원/진료과목 선택</span><span>상담 시간 예약</span><span>당일 참석</span><span>원장상담 완료</span><span>실장상담 완료</span><span>예약금 안내</span><span>예약금 지불</span><span>수술 예약</span></div>
+          <div class="table-wrap"><table><thead><tr><th>구간</th><th>핵심 병목</th><th>방어 장치</th></tr></thead><tbody>
+            <tr><td>모객</td><td>이벤트 제안이 약해 클릭·신청이 낮음</td><td>상담회 일정, 참여 병원, 일본어 지원, 무료/혜택보다 신뢰 중심 카피</td></tr>
+            <tr><td>신청</td><td>무료 리드·저품질 리드 유입</td><td>관심 시술, 예산 범위, 방한 가능시점, 상담 희망 병원 수집</td></tr>
+            <tr><td>참석</td><td>노쇼 발생</td><td>슬롯 선택, LINE 확정, D-1/D-day 리마인드</td></tr>
+            <tr><td>상담</td><td>상담이 얕거나 실장상담으로 연결되지 않음</td><td>사전 문진, 원장상담 후 즉시 실장상담 연결</td></tr>
+            <tr><td>전환</td><td>예약금 안내 전 연락두절</td><td>상담 리포트, 견적 요약, 예약금/환불 조건 안내, 24시간 후속 연락</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="metric">
+          <div class="section-head"><div><span class="num">06</span><h2>핵심 Metric</h2><p class="subtitle">외부 이해관계자에게 보여줄 수 있는 실제 증거 Metric를 우선합니다.</p></div></div>
+          <div class="metric-grid">
+            <div class="metric-card"><b>58.8%</b><span>6월 모객 대비 상담 진행률 기준값<br/>20 ÷ 34</span></div>
+            <div class="metric-card"><b>5.0%</b><span>6월 상담자 대비 연락 성공률<br/>1 ÷ 20</span></div>
+            <div class="metric-card"><b>95.0%</b><span>6월 상담자 대비 연락두절률<br/>19 ÷ 20</span></div>
+            <div class="metric-card"><b>North Star</b><span>상담 완료자 중 예약금 지불 고객 수</span></div>
+          </div>
+          <div class="table-wrap"><table><thead><tr><th>지표</th><th>계산식</th><th>의미</th><th>우선도</th></tr></thead><tbody>
+            <tr><td>상담회 신청 전환율</td><td>신청자 ÷ 랜딩 방문자</td><td>상담회 제안력</td><td>선행</td></tr>
+            <tr><td>신청자 대비 참석률</td><td>실제 참석자 ÷ 신청자</td><td>모객 품질</td><td>선행</td></tr>
+            <tr><td>참석자 대비 상담 완료율</td><td>원장+실장 상담 완료자 ÷ 참석자</td><td>상담 운영 품질</td><td>선행/중간</td></tr>
+            <tr><td>예약금 안내 도달률</td><td>예약금 안내 고객 ÷ 상담 완료자</td><td>세일즈 연결률</td><td>후행</td></tr>
+            <tr><td>예약금 지불률</td><td>예약금 지불자 ÷ 상담 완료자</td><td>실제 구매 의향</td><td>후행 핵심</td></tr>
+            <tr><td>예약금 고객 획득비용</td><td>총 디지털 모객비 ÷ 예약금 지불자</td><td>투자자용 경제성 지표</td><td>후행 핵심</td></tr>
+            <tr><td>온라인 vs 오프라인 전환 비교</td><td>온라인 예약금 지불률 ÷ 오프라인 예약금 지불률</td><td>온라인 상담회 대체·확장 가능성</td><td>전략 핵심</td></tr>
+          </tbody></table></div>
+          <div class="quote">온라인 상담회가 오프라인 상담회 대비 유사한 상담 만족도와 예약금 전환 가능성을 유지하면서, 디지털 모객을 통해 반복 가능한 매체로 확장될 수 있는지를 검증한다.</div>
+        </section>
+
+        <section class="section" id="attributes">
+          <div class="section-head"><div><span class="num">07</span><h2>온라인 상담회 필수 속성</h2><p class="subtitle">일본 고객 심리와 병원 신뢰를 모두 고려한 기본 속성입니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>속성</th><th>필요 이유</th><th>누락 시 실패 위험</th></tr></thead><tbody>
+            <tr><td>특정 기간·상담회명</td><td>이벤트성과 긴급성을 만듭니다.</td><td>상시 문의처럼 보여 신청 동기가 약해짐</td></tr>
+            <tr><td>참여 병원·의료진 확정</td><td>의료 신뢰의 핵심입니다.</td><td>홍보성 페이지로 보이며 불신 발생</td></tr>
+            <tr><td>진료과목별 상담 부스</td><td>비교 선택이 아니라 복수 상담 신청을 유도합니다.</td><td>병원 간 비교표처럼 보여 고객 혼란·병원 충돌</td></tr>
+            <tr><td>일본어 지원·AI 통역 고지</td><td>언어 불안을 줄입니다.</td><td>상담 신청·참석률 저하</td></tr>
+            <tr><td>상담 후 결정 가능 고지</td><td>강매 불안을 줄입니다.</td><td>일본 고객의 심리적 저항 증가</td></tr>
+            <tr><td>개인정보·STT 저장 고지</td><td>상담 데이터 저장에 대한 불안을 줄입니다.</td><td>상담 중 신뢰 저하, 법무 리스크</td></tr>
+            <tr><td>사전 문진</td><td>원장상담 품질과 실장상담 연결력을 높입니다.</td><td>상담이 얕아지고 예약금 전환 약화</td></tr>
+            <tr><td>리포트 제공</td><td>병원의 후속 영업과 이뻐 차별화를 만듭니다.</td><td>STT가 단순 기록으로만 남음</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="acquisition">
+          <div class="section-head"><div><span class="num">08</span><h2>모객 파이프라인</h2><p class="subtitle">신청 수보다 유효 상담 완료자와 예약금 후보를 만드는 채널을 찾습니다.</p></div></div>
+          <div class="cards">
+            <div class="mini-card"><span class="label">Channel</span><h3>채널</h3><ul><li>Meta 광고</li><li>X/Instagram 콘텐츠</li><li>LINE 유입</li><li>병원 보유 채널</li><li>기존 DB 리마케팅</li></ul></div>
+            <div class="mini-card"><span class="label">Creative</span><h3>소재</h3><ul><li>상담회 일정형</li><li>참여 병원형</li><li>진료과목형</li><li>일본어 상담 안심형</li><li>방한 전 상담 준비형</li></ul></div>
+            <div class="mini-card"><span class="label">Optimization</span><h3>최적화</h3><ul><li>신청 CPA만 보지 않음</li><li>참석 CPA 추적</li><li>상담 완료 CPA 추적</li><li>예약금 고객 획득비용 추적</li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="noshow">
+          <div class="section-head"><div><span class="num">09</span><h2>참석·노쇼 방어</h2><p class="subtitle">무료 상담회는 신청률은 높일 수 있지만 노쇼와 연락두절을 만들 수 있습니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>실패 가능성</th><th>왜 발생하는가</th><th>사전 방어책</th><th>확인 Metric</th></tr></thead><tbody>
+            <tr><td>신청은 많지만 참석 낮음</td><td>무료 신청, 낮은 확정감</td><td>상담 시간 슬롯 선택, LINE 확정, 리마인드</td><td>슬롯 선택률, 참석률, 노쇼율</td></tr>
+            <tr><td>상담 후 연락두절</td><td>LINE 연결 미흡, 후속 담당 불명확</td><td>신청 완료 조건에 LINE 친구확정 포함</td><td>LINE 확정률, 24시간 연락성공률</td></tr>
+            <tr><td>실장상담 미연결</td><td>원장상담 후 다음 액션 불명확</td><td>원장상담 직후 실장상담 연결</td><td>실장상담 연결률</td></tr>
+            <tr><td>예약금 전환 낮음</td><td>상담 요약·견적·환불 조건 부족</td><td>상담 리포트+견적+예약금 안내</td><td>예약금 안내 도달률, 지불률</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="sop">
+          <div class="section-head"><div><span class="num">10</span><h2>상담 운영 SOP</h2><p class="subtitle">상담 전, 상담 중, 상담 후를 하나의 전환 운영으로 관리합니다.</p></div></div>
+          <div class="cards">
+            <div class="mini-card"><span class="label">상담 전</span><ul><li>신청 완료 메시지</li><li>LINE 친구확정</li><li>사전 문진</li><li>D-1/D-day 리마인드</li><li>상담 링크 발송</li></ul></div>
+            <div class="mini-card"><span class="label">상담 중</span><ul><li>출석 체크</li><li>통역/언어 지원</li><li>원장상담</li><li>실장상담 연결</li><li>STT 저장</li></ul></div>
+            <div class="mini-card"><span class="label">상담 후</span><ul><li>상담 요약 발송</li><li>리포트 생성</li><li>견적/예약금 안내</li><li>24시간 내 후속 연락</li><li>수술예약 후보 분류</li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="deposit">
+          <div class="section-head"><div><span class="num">11</span><h2>예약금·수술예약 전환</h2><p class="subtitle">투자자와 병원이 가장 중요하게 보는 실제 증거 Metric입니다.</p></div></div>
+          <div class="flow"><span>원장상담 완료</span><span>실장상담 연결</span><span>상담 리포트</span><span>견적/일정 안내</span><span>예약금 목적 고지</span><span>환불/변경 조건 안내</span><span>예약금 지불</span><span>수술 예약</span></div>
+          <div class="note"><strong>예약금 안내 원칙</strong>예약금은 상담 전 과도하게 제시하기보다 원장상담과 실장상담 이후, 고객이 시술·비용·방한 일정의 윤곽을 이해한 시점에 안내하는 것이 안전합니다.</div>
+        </section>
+
+        <section class="section" id="dashboard">
+          <div class="section-head"><div><span class="num">12</span><h2>Dashboard</h2><p class="subtitle">실행팀용 일간 대시보드와 외부 이해관계자용 주간 지표를 분리합니다.</p></div></div>
+          <div class="cards two">
+            <div class="mini-card"><span class="label">Daily</span><h3>일간 운영 지표</h3><ul><li>광고비, 노출, 클릭, CPC</li><li>랜딩 유입, 신청자 수</li><li>병원별 신청수, 복수 신청률</li><li>슬롯 선택수, LINE 확정률</li><li>문진 완료수, 리마인드 확인률</li><li>참석 예정자 리스트</li></ul></div>
+            <div class="mini-card"><span class="label">Weekly</span><h3>주간 판단 지표</h3><ul><li>신청 CPA, 참석 CPA, 상담 완료 CPA</li><li>참석률, 노쇼율, 상담 완료율</li><li>예약금 안내 도달률, 지불률</li><li>병원별 만족도, 환자 만족도</li><li>오프라인 상담회 대비 전환 비교</li><li>GO/FIX/STOP/SCALE Memo</li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="playbook">
+          <div class="section-head"><div><span class="num">13</span><h2>4주 실행계획</h2><p class="subtitle">Track 1은 실제 상담회가 열리는 구조이므로 병원·일정·운영 준비가 선행되어야 합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>기간</th><th>목표</th><th>핵심 업무</th><th>산출물</th></tr></thead><tbody>
+            <tr><td>Week 1</td><td>상담회 설계</td><td>참여 병원 확정, 진료과목 구성, 상담 슬롯 확보, 상담회 랜딩 기획, STT/리포트 범위 확정</td><td>병원 리스트, 카테고리표, 슬롯표, Funnel 설계도, 리포트 샘플</td></tr>
+            <tr><td>Week 2</td><td>모객 세팅</td><td>랜딩 제작, 병원 카드 제작, 광고 소재 제작, LINE/신청 응대 세팅, 트래킹 세팅</td><td>상담회 페이지, 병원 카드, 소재 8~12개, SOP, Event Sheet</td></tr>
+            <tr><td>Week 3</td><td>모객 집행</td><td>광고 집행, 채널별 신청수 확인, 병원별 신청수 확인, 리마인드 발송, 부족 카테고리 보정</td><td>캠페인 리포트, 모객 대시보드, 병원별 수요표, 예산 조정표</td></tr>
+            <tr><td>Week 4</td><td>상담회 운영·전환</td><td>상담회 진행, 원장/실장 상담 기록, STT 저장, 리포트 생성, 예약금/수술예약 후속, 만족도 조사</td><td>상담 로그, STT 데이터, 상담 리포트, 예약금 전환 리포트, 만족도 리포트</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="decision">
+          <div class="section-head"><div><span class="num">14</span><h2>의사결정 기준</h2><p class="subtitle">상담회형은 신청 수가 아니라 참석·상담 완료·예약금 지불 가능성으로 판단합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>판단</th><th>조건</th><th>다음 액션</th></tr></thead><tbody>
+            <tr><td>GO</td><td>디지털 모객으로 신청자가 발생하고, 실제 참석·원장상담·실장상담까지 완료되며, 예약금 또는 수술예약 의향이 확인된다.</td><td>상담회 정례화, 참여 병원 확대, 국가/진료과목 확장</td></tr>
+            <tr><td>FIX</td><td>신청은 있으나 참석률이 낮거나, 상담은 완주하나 예약금 전환이 낮다. 특정 병원에 신청이 몰리거나 리포트 운영이 지연된다.</td><td>모객 메시지, 슬롯 선택, 리마인드, 실장상담, 리포트 SOP 보정</td></tr>
+            <tr><td>STOP</td><td>병원명과 상담회 제안을 내세워도 디지털 모객으로 신청·참석이 거의 발생하지 않거나, 병원·환자 모두 만족하지 못한다.</td><td>상담회형 재설계 또는 채널/국가/병원 조합 전면 변경</td></tr>
+            <tr><td>SCALE</td><td>반복적으로 신청이 발생하고, 상담 슬롯이 소진되며, 예약금 전환과 병원 재참여 의향이 확인된다.</td><td>월간 온라인 상담회 매체화, 병원 패키지 상품화, 투자자용 Evidence Deck 제작</td></tr>
+          </tbody></table></div>
+          <div class="quote">Track 1의 성공은 “신청자가 많다”가 아니라 “디지털 모객으로 확보한 고객이 상담을 완료하고 예약금 지불 또는 수술예약 후보가 된다”입니다.</div>
+        </section>
+
+        <footer class="footer">
+          <b>IPPEO Track 1 Online Consultation Fair POC Playbook</b>
+          <span>본 문서는 메디힘 이뻐 온라인 상담회형 POC의 실행·측정·의사결정을 위한 내부 전략 페이지입니다.</span>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
