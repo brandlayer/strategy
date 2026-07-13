@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Track 2 · 이뻐 상담 게이트형 POC 실행 Playbook</title>
+  <meta name="description" content="병원 홈페이지·시술 페이지·의료진 페이지에 이뻐 상담 게이트를 탑재해 온라인 상담 신청·시간 선택·상담 참석·예약금 의향까지 검증하는 Track 2 POC 실행안" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root{
+      --bg:#f6f3ee;--paper:#fffdf8;--ink:#141414;--muted:#666660;--line:#dfd8cb;--soft:#eee8dc;--soft2:#f9f6f0;
+      --accent:#22364a;--accent2:#55708c;--blue-bg:#edf4fb;--green-bg:#edf7f1;--green-line:#cde5d7;--amber-bg:#fff6e6;--amber-line:#ecd39f;--red-bg:#fff0ef;--red-line:#efc4c0;
+      --radius:20px;--shadow:0 18px 50px rgba(25,20,12,.08);--shadow-sm:0 12px 30px rgba(25,20,12,.055);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.68;word-break:keep-all;letter-spacing:-.025em;font-size:18px} a{color:inherit;text-decoration:none}
+    .topbar{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(246,243,238,.9);border-bottom:1px solid rgba(20,20,20,.08)}
+    .topbar-inner{max-width:1440px;margin:auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;font-size:19px;letter-spacing:-.035em}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav a{font-size:14px;color:#3f3f3f;padding:8px 11px;border-radius:999px;border:1px solid transparent}.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.7)}
+    .wrap{max-width:1440px;margin:auto;padding:34px 28px 82px}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:24px;align-items:stretch;margin:18px 0 28px}.hero-card,.panel,.section,.lnb,.mini-card,.metric-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-card{padding:44px 44px 38px;position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;right:-120px;top:-140px;width:360px;height:360px;border-radius:50%;background:rgba(34,54,74,.09)}.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff} h1{font-size:54px;line-height:1.06;margin:26px 0 18px;letter-spacing:-.055em} h2{font-size:34px;line-height:1.22;margin:0 0 16px;letter-spacing:-.045em} h3{font-size:24px;margin:0 0 12px;letter-spacing:-.04em} h4{font-size:20px;margin:0 0 8px;letter-spacing:-.035em} p{margin:0 0 14px;color:#292929}.lead{font-size:22px;color:#2b2b2b;max-width:860px;font-weight:650;line-height:1.55}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:999px;background:var(--soft2);border:1px solid var(--line);font-size:14px;font-weight:800;color:#333}.hero-side{padding:26px;display:flex;flex-direction:column;gap:14px}.decision-box{background:var(--accent);color:#fff;border-radius:18px;padding:24px}.decision-box p{color:rgba(255,255,255,.86)}.decision-box strong{display:block;font-size:28px;letter-spacing:-.04em;margin-bottom:8px}.warning{background:#fff8e7;border:1px solid #ead79f;border-radius:18px;padding:20px;color:#3c3119}.warning strong{display:block;margin-bottom:8px;color:#2e2412}.grid-layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;align-items:start}.lnb{position:sticky;top:86px;padding:18px;max-height:calc(100vh - 110px);overflow:auto}.lnb .title{font-size:13px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:4px 0 12px}.lnb a{display:block;padding:10px 12px;border-radius:12px;color:#383838;font-size:15px;font-weight:800}.lnb a:hover{background:var(--soft2)}.lnb .help{font-size:13px;color:var(--muted);line-height:1.58;margin-top:14px;padding:12px;border-top:1px solid var(--line)}.content{display:flex;flex-direction:column;gap:24px}.section{padding:34px}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px}.num{font-size:13px;font-weight:900;color:#fff;background:#111;border-radius:999px;padding:7px 10px;letter-spacing:.08em}.subtitle{color:var(--muted);font-size:16px;max-width:740px}.quote{background:#fff;border:1px solid var(--line);border-left:5px solid #111;border-radius:16px;padding:22px;font-size:22px;font-weight:900;line-height:1.55;letter-spacing:-.04em;box-shadow:var(--shadow-sm);margin:18px 0}.flow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.flow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 11px;font-size:14px;font-weight:900;box-shadow:0 8px 22px rgba(20,20,20,.04)}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}.mini-card{padding:20px;box-shadow:var(--shadow-sm)}.mini-card .label{display:inline-flex;background:#111;color:#fff;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:900;margin-bottom:13px;text-transform:uppercase;letter-spacing:.05em}.mini-card p{color:#4b4b46;font-size:15.5px}.mini-card ul{margin:10px 0 0;padding-left:18px;color:#3a3a35;font-size:15.5px}.mini-card li{margin:5px 0}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.metric-card{padding:18px;box-shadow:var(--shadow-sm)}.metric-card b{font-size:24px;letter-spacing:-.05em;display:block;margin-bottom:6px}.metric-card span{font-size:14px;color:var(--muted);font-weight:700}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);margin:16px 0} table{width:100%;border-collapse:collapse;min-width:880px;background:#fff;font-size:15.5px} th,td{padding:14px 15px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left} th{background:#111;color:#fff;font-weight:900;font-size:14px;letter-spacing:-.01em} tr:last-child td{border-bottom:0} td:first-child{font-weight:900;color:#111}.tag{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;background:var(--soft2);border:1px solid var(--line);margin:2px}.good{background:var(--green-bg);border-color:var(--green-line)}.bad{background:var(--red-bg);border-color:var(--red-line)}.amber{background:var(--amber-bg);border-color:var(--amber-line)}.note{background:#f8fbff;border:1px solid #d8e5f2;border-radius:18px;padding:20px;margin:18px 0}.note strong{display:block;margin-bottom:8px}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 15px;font-size:15px;font-weight:750;box-shadow:var(--shadow-sm)}.footer{color:#777;margin-top:36px;padding:26px 0;border-top:1px solid var(--line);font-size:14px}.print-only{display:none}
+    @media(max-width:1100px){.hero,.grid-layout{grid-template-columns:1fr}.lnb{position:relative;top:auto;max-height:none}.cards,.cards.two{grid-template-columns:1fr 1fr}.metric-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:720px){body{font-size:16px}.topbar-inner{padding:14px 18px}.nav{display:none}.wrap{padding:24px 16px 62px}.hero-card{padding:30px 24px}.hero-side{padding:20px}h1{font-size:40px}.lead{font-size:18px}.section{padding:24px 18px}.section-head{display:block}.cards,.cards.two,.metric-grid,.checklist{grid-template-columns:1fr}table{font-size:14px}.quote{font-size:18px}} @media print{.topbar,.lnb{display:none}.wrap{max-width:none;padding:16px}.grid-layout{display:block}.section,.hero-card,.panel{box-shadow:none}.print-only{display:block}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><small>IPPEO POC</small>Track 2 · 상담 게이트형</a>
+      <nav class="nav">
+        <a href="#definition">정의</a><a href="#hypothesis">가설</a><a href="#scenario">시나리오</a><a href="#metric">지표</a><a href="#playbook">실행</a><a href="#decision">판단</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">Medihim · IPPEO · Track 2</span>
+        <h1>이뻐 상담 게이트형 POC<br/>실행 Playbook</h1>
+        <p class="lead">병원 홈페이지·시술 페이지·의료진 페이지의 기존 신뢰 위에 이뻐 상담 게이트를 탑재했을 때, 고객이 온라인 상담 신청·시간 선택·상담 참석·예약금 의향까지 이동하는지 검증하는 실행안입니다.</p>
+        <div class="hero-meta"><span class="pill">Pretotype 가능</span><span class="pill">T1/T2 병원 대상</span><span class="pill">선행·후행지표 분리</span><span class="pill">GO/FIX/STOP/SCALE</span></div>
+      </div>
+      <aside class="hero-side panel">
+        <div class="decision-box"><strong>핵심 질문</strong><p>병원의 기존 신뢰와 트래픽 위에 이뻐 상담 게이트를 붙이면, 일반 문의보다 더 구체적인 온라인 상담 행동이 발생하는가?</p></div>
+        <div class="warning"><strong>Track 2의 위치</strong>상담회형은 실제 운영 중심 POC이고, 게이트형은 비교적 낮은 개발 비용으로 Pretotype → MVP → 실제 상담 연결까지 검증할 수 있는 Track입니다.</div>
+        <div class="note"><strong>North Star</strong>병원 자산 기반 온라인 상담 완료자 중 예약금 지불 또는 예약금 의향 고객 수</div>
+      </aside>
+    </section>
+
+    <div class="grid-layout">
+      <aside class="lnb">
+        <div class="title">Execution Index</div>
+        <a href="#definition">01. POC 정의</a>
+        <a href="#principle">02. 실행 원칙</a>
+        <a href="#hypothesis">03. 핵심 가설</a>
+        <a href="#scenario">04. 검증 시나리오</a>
+        <a href="#funnel">05. Funnel 설계</a>
+        <a href="#metric">06. Metric 설계</a>
+        <a href="#pretotype">07. Pretotype 실행안</a>
+        <a href="#gate">08. 랜딩·게이트 구조</a>
+        <a href="#friction">09. 가입·앱 설치 위치</a>
+        <a href="#deposit">10. 예약금 의향 테스트</a>
+        <a href="#sop">11. 운영 SOP</a>
+        <a href="#dashboard">12. Dashboard</a>
+        <a href="#playbook">13. 2~4주 실행계획</a>
+        <a href="#decision">14. 의사결정 기준</a>
+        <div class="help">본 문서는 Track 2 게이트형 실행을 위한 Index 타입 상세안입니다. 선택된 병원·시술 페이지별로 복제해 테스트할 수 있습니다.</div>
+      </aside>
+      <div class="content">
+
+        <section class="section" id="definition">
+          <div class="section-head"><div><span class="num">01</span><h2>POC 정의</h2><p class="subtitle">Track 2는 병원 홈페이지 안의 상담 전환 장치가 실제 상담 행동을 만드는지 검증합니다.</p></div></div>
+          <div class="quote">병원 홈페이지 방문자가 이뻐 상담 게이트를 보고 온라인 상담 신청·시간 선택·상담 참석까지 이동하는지 검증한다.</div>
+          <div class="table-wrap"><table><thead><tr><th>항목</th><th>정의</th><th>실행 의미</th></tr></thead><tbody>
+            <tr><td>POC 명칭</td><td>이뻐 병원 홈페이지 상담 게이트형 POC</td><td>병원 자산 위에 이뻐 상담 전환 장치를 탑재</td></tr>
+            <tr><td>대상 병원</td><td>T1/T2 병원</td><td>외국인환자 유치 의지와 홈페이지 자산이 있는 병원 우선</td></tr>
+            <tr><td>고객 접점</td><td>병원 메인, 시술 상세, 의료진 프로필</td><td>고객의 신뢰와 시술 맥락이 이미 형성된 지점에서 상담 신청 유도</td></tr>
+            <tr><td>최종 행동</td><td>상담 신청, 시간 선택, 실제 참석, 예약금 의향</td><td>클릭이 아니라 상담·결제 의향까지 추적</td></tr>
+            <tr><td>실행 성격</td><td>Pretotype 가능</td><td>처음부터 대규모 개발보다 버튼·랜딩·폼·LINE·트래킹으로 검증</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="principle">
+          <div class="section-head"><div><span class="num">02</span><h2>실행 원칙</h2><p class="subtitle">게이트형은 “이뻐를 홍보하는 방식”이 아니라 “병원 상담 수요를 더 구체적 행동으로 이동시키는 방식”입니다.</p></div></div>
+          <div class="cards">
+            <div class="mini-card"><span class="label">Principle 1</span><h3>병원 신뢰를 빌린다</h3><p>고객은 이뻐를 먼저 신뢰하는 것이 아니라 병원과 의료진을 먼저 보고 상담 신청을 판단합니다.</p></div>
+            <div class="mini-card"><span class="label">Principle 2</span><h3>시간 선택을 앞당긴다</h3><p>상담 가능 시간이 보이면 단순 문의가 아니라 예약 행동으로 전환될 가능성이 높아집니다.</p></div>
+            <div class="mini-card"><span class="label">Principle 3</span><h3>회원가입·앱 설치는 후행</h3><p>고객이 상담 가치를 이해하기 전 가입이나 앱 설치를 요구하면 이탈이 커질 수 있습니다.</p></div>
+            <div class="mini-card"><span class="label">Principle 4</span><h3>LINE 연결을 필수화한다</h3><p>6월의 연락두절 리스크를 줄이기 위해 신청 완료 전후 LINE 친구확정률을 관리합니다.</p></div>
+            <div class="mini-card"><span class="label">Principle 5</span><h3>예약금은 후행 검증</h3><p>초기에는 예약금 안내 도달·결제 클릭·결제 진입을 먼저 보고, 실제 결제는 운영 준비 후 강화합니다.</p></div>
+            <div class="mini-card"><span class="label">Principle 6</span><h3>상담 완료 CPA를 본다</h3><p>게이트 클릭이나 신청 수보다 실제 상담 완료자와 예약금 의향 고객 획득비용을 핵심으로 봅니다.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="hypothesis">
+          <div class="section-head"><div><span class="num">03</span><h2>핵심 가설</h2><p class="subtitle">시장·고객·신뢰·전환·마찰·결제·운영·병원가치 가설을 분리해 검증합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>가설</th><th>검증 문장</th><th>선행지표</th><th>후행지표</th><th>액션 가설</th></tr></thead><tbody>
+            <tr><td>H1 시장가설</td><td>병원 홈페이지 방문자는 온라인 상담 게이트에 반응한다.</td><td>게이트 노출수, 클릭률</td><td>상담 신청수</td><td>병원명과 일본어 상담을 명확히 노출하면 클릭률이 올라간다.</td></tr>
+            <tr><td>H2 고객가설</td><td>시술 맥락이 분명할수록 상담 신청 가능성이 높다.</td><td>시술 페이지 체류, 게이트 클릭률</td><td>시술별 상담 신청률</td><td>시술 페이지에 맥락형 CTA를 붙이면 신청률이 올라간다.</td></tr>
+            <tr><td>H3 신뢰가설</td><td>의료진 프로필과 전문성이 있으면 신청률이 높아진다.</td><td>의료진 페이지 조회, CTA 클릭률</td><td>의사별 상담 신청수</td><td>“이 의사에게 상담” 메시지가 병원 일반 CTA보다 강할 수 있다.</td></tr>
+            <tr><td>H4 전환가설</td><td>상담 가능 시간을 먼저 보여주면 신청률과 참석률이 높아진다.</td><td>슬롯 조회, 슬롯 선택률</td><td>상담 참석률</td><td>슬롯 선노출은 상담 행동의 구체성을 높인다.</td></tr>
+            <tr><td>H5 마찰가설</td><td>회원가입·앱 설치를 뒤로 미루면 신청 전환율이 높아진다.</td><td>폼 시작률, 신청 완료율</td><td>문진 완료율, 상담 참석률</td><td>가입·앱 설치는 상담 준비 단계로 후행 배치한다.</td></tr>
+            <tr><td>H6 준비가설</td><td>짧은 사전 문진은 상담 완료율을 높인다.</td><td>문진 시작률, 완료율</td><td>원장/실장 상담 완료율</td><td>문진은 짧고 목적이 명확할수록 상담 품질이 올라간다.</td></tr>
+            <tr><td>H7 결제가설</td><td>상담 후 예약금 안내를 명확히 하면 결제 의향이 발생한다.</td><td>예약금 안내 도달, 결제 클릭</td><td>예약금 지불률, 수술 예약률</td><td>환불·변경 조건을 명확히 하면 결제 불안이 낮아진다.</td></tr>
+            <tr><td>H8 운영가설</td><td>LINE 리마인드와 SOP가 있으면 노쇼와 연락두절이 줄어든다.</td><td>LINE 친구확정, 리마인드 확인</td><td>참석률, 연락성공률</td><td>D-1/D-day 리마인드는 참석률을 높인다.</td></tr>
+            <tr><td>H9 병원가치가설</td><td>병원은 유효 상담과 예약금 후보가 발생하면 게이트를 유지하려 한다.</td><td>병원별 상담 완료수</td><td>병원 만족도, 유지 의향</td><td>병원별 성과 리포트를 제공하면 재참여 의향이 올라간다.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="scenario">
+          <div class="section-head"><div><span class="num">04</span><h2>검증 시나리오 Index</h2><p class="subtitle">Track 2에서 반드시 검증해야 할 시나리오를 우선순위와 실행 수준으로 구분합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>시나리오</th><th>명칭</th><th>검증 질문</th><th>필수 액션</th><th>우선순위</th></tr></thead><tbody>
+            <tr><td>G1</td><td>병원 홈페이지 고정 게이트</td><td>홈페이지 방문자가 상담 게이트를 클릭하는가?</td><td>메인/공통 영역에 배너·버튼·플로팅 CTA 삽입</td><td><span class="tag good">1순위</span></td></tr>
+            <tr><td>G2</td><td>시술 페이지 맥락형 게이트</td><td>시술 정보를 본 고객이 상담 신청으로 이동하는가?</td><td>눈·코·피부·리프팅 등 시술별 게이트 CTA 삽입</td><td><span class="tag good">1순위</span></td></tr>
+            <tr><td>G3</td><td>의료진 프로필형 게이트</td><td>의사 전문성을 본 고객이 상담 신청하는가?</td><td>의료진 프로필 하단에 “이 의사에게 온라인 상담” CTA</td><td><span class="tag amber">2순위</span></td></tr>
+            <tr><td>G4</td><td>슬롯 선노출형 게이트</td><td>상담 가능 시간을 먼저 보여주면 신청률이 오르는가?</td><td>랜딩 또는 폼 상단에 실제 가능 슬롯 노출</td><td><span class="tag good">1순위</span></td></tr>
+            <tr><td>G5</td><td>회원가입 위치 테스트</td><td>회원가입을 뒤로 미루면 이탈이 줄어드는가?</td><td>가입 선행형 vs 신청 후행형 vs 상담 확정 후 가입형 비교</td><td><span class="tag good">1순위</span></td></tr>
+            <tr><td>G6</td><td>앱 설치 위치 테스트</td><td>앱 설치를 상담 준비로 안내하면 수용되는가?</td><td>신청 완료 후 앱 설치/문진 유도</td><td><span class="tag amber">2순위</span></td></tr>
+            <tr><td>G7</td><td>예약금 안내 Pretotype</td><td>상담 후 예약금 지불 의향이 발생하는가?</td><td>상담 후 예약금 안내·결제 클릭·결제 진입 측정</td><td><span class="tag amber">2순위</span></td></tr>
+            <tr><td>G8</td><td>LINE 리마인드 강화</td><td>리마인드가 참석률과 연락성공률을 높이는가?</td><td>신청 직후, D-1, D-day, 상담 후 24시간 메시지</td><td><span class="tag good">1순위</span></td></tr>
+          </tbody></table></div>
+          <div class="note"><strong>1차 실행 조합</strong>G1 + G2 + G4 + G5 + G8을 기본 실행 세트로 잡고, G6·G7은 상담 연결이 발생하는 즉시 후행 테스트로 붙입니다.</div>
+        </section>
+
+        <section class="section" id="funnel">
+          <div class="section-head"><div><span class="num">05</span><h2>Funnel 설계</h2><p class="subtitle">클릭을 상담 신청으로, 상담 신청을 참석·예약금 의향으로 연결하는 흐름입니다.</p></div></div>
+          <div class="flow"><span>병원 홈페이지 방문</span><span>게이트 노출</span><span>게이트 클릭</span><span>상담 게이트 랜딩</span><span>시간 확인</span><span>상담 신청</span><span>LINE 친구추가</span><span>문진/앱</span><span>상담 참석</span><span>원장상담</span><span>실장상담</span><span>예약금 안내</span><span>예약금/수술예약</span></div>
+          <div class="table-wrap"><table><thead><tr><th>단계</th><th>병목 가능성</th><th>방어 장치</th><th>측정 이벤트</th></tr></thead><tbody>
+            <tr><td>게이트 노출</td><td>고객이 못 봄</td><td>플로팅 CTA, 본문 중간, 하단 고정 버튼</td><td>gate_view</td></tr>
+            <tr><td>게이트 클릭</td><td>신뢰 부족</td><td>병원명·의료진·일본어 상담 가능 노출</td><td>gate_click</td></tr>
+            <tr><td>신청</td><td>입력 부담</td><td>이름, LINE, 관심 시술, 희망 시간만 우선 수집</td><td>lead_submit</td></tr>
+            <tr><td>시간 선택</td><td>일정 불확실</td><td>실제 상담 가능 슬롯 노출</td><td>slot_view, slot_select</td></tr>
+            <tr><td>LINE 추가</td><td>연락두절</td><td>신청 완료 조건 또는 완료 직후 LINE 친구확정</td><td>line_click, line_confirm</td></tr>
+            <tr><td>앱 설치</td><td>설치 저항</td><td>상담 품질을 높이는 준비 단계로 설명</td><td>app_click, app_install</td></tr>
+            <tr><td>상담 참석</td><td>노쇼</td><td>D-1/D-day 리마인드, 상담 링크 재전송</td><td>attend_check</td></tr>
+            <tr><td>예약금</td><td>결제 불안</td><td>예약금 목적·환불/변경 조건·병원 확인 조건 명시</td><td>deposit_view, deposit_click, payment_enter</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="metric">
+          <div class="section-head"><div><span class="num">06</span><h2>Metric 설계</h2><p class="subtitle">선행지표와 후행지표를 나눠 관리하고, 투자자용 핵심 Metric을 별도 관리합니다.</p></div></div>
+          <div class="metric-grid">
+            <div class="metric-card"><b>Gate CTR</b><span>게이트 클릭률</span></div>
+            <div class="metric-card"><b>Lead CVR</b><span>상담 신청률</span></div>
+            <div class="metric-card"><b>Attend Rate</b><span>상담 참석률</span></div>
+            <div class="metric-card"><b>Deposit CVR</b><span>예약금 지불률</span></div>
+          </div>
+          <div class="cards two">
+            <div class="mini-card"><span class="label">Leading Metrics</span><h3>선행지표</h3><ul><li>게이트 노출수·클릭률</li><li>게이트 랜딩 완주율</li><li>상담 신청률·신청 CPA</li><li>슬롯 선택률</li><li>LINE 친구확정률</li><li>사전 문진 완료율</li><li>상담 참석률</li><li>원장/실장 상담 완료율</li></ul></div>
+            <div class="mini-card"><span class="label">Lagging Metrics</span><h3>후행지표</h3><ul><li>상담 후 연락성공률</li><li>예약금 안내 도달률</li><li>예약금 지불률</li><li>수술 예약률</li><li>예약금 고객 획득비용</li><li>병원 만족도</li><li>게이트 유지 의향</li><li>병원 유료 전환 의향</li></ul></div>
+          </div>
+          <div class="table-wrap"><table><thead><tr><th>투자자용 Metric</th><th>계산식</th><th>의미</th></tr></thead><tbody>
+            <tr><td>게이트 신청 전환율</td><td>상담 신청자 ÷ 게이트 클릭자</td><td>게이트가 상담 행동을 만드는지</td></tr>
+            <tr><td>상담 참석률</td><td>실제 참석자 ÷ 상담 신청자</td><td>신청 리드의 품질</td></tr>
+            <tr><td>상담 완료율</td><td>원장+실장 상담 완료자 ÷ 참석자</td><td>실제 상담 운영 성립 여부</td></tr>
+            <tr><td>예약금 지불률</td><td>예약금 지불자 ÷ 상담 완료자</td><td>실제 구매 의향</td></tr>
+            <tr><td>예약금 고객 획득비용</td><td>총 모객비 ÷ 예약금 지불자</td><td>경제성</td></tr>
+            <tr><td>수술 예약률</td><td>수술 예약자 ÷ 상담 완료자</td><td>병원 매출 가능성</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="pretotype">
+          <div class="section-head"><div><span class="num">07</span><h2>Pretotype 실행안</h2><p class="subtitle">개발을 최소화하고, 실제 상담 연결이 가능한 수준까지 빠르게 테스트합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>구성 요소</th><th>최소 구현 방식</th><th>산출물</th></tr></thead><tbody>
+            <tr><td>병원 홈페이지 게이트</td><td>배너, 버튼, 플로팅 CTA 삽입</td><td>Gate CTA 이미지/HTML</td></tr>
+            <tr><td>게이트 랜딩</td><td>단일 HTML 또는 노코드 페이지</td><td>상담 신청 랜딩</td></tr>
+            <tr><td>시간 선택</td><td>Google Form, Calendly, 임시 예약폼, 자체 폼</td><td>상담 슬롯 선택 폼</td></tr>
+            <tr><td>LINE 연결</td><td>신청 완료 후 LINE 추가 버튼</td><td>LINE CTA, 자동응답 문구</td></tr>
+            <tr><td>앱 설치</td><td>신청 완료 페이지에서 후행 안내</td><td>앱 설치 안내 카피</td></tr>
+            <tr><td>문진</td><td>짧은 사전 체크 폼</td><td>관심 시술·예산·방한시점 문항</td></tr>
+            <tr><td>예약금 안내</td><td>상담 후 안내 페이지 또는 메시지</td><td>예약금 안내/환불정책 문구</td></tr>
+            <tr><td>트래킹</td><td>UTM + GA4 이벤트 + 신청 시트</td><td>Tracking Spec, Dashboard Sheet</td></tr>
+          </tbody></table></div>
+          <div class="flow"><span>병원 홈페이지</span><span>이뻐 온라인 상담 버튼</span><span>게이트 랜딩</span><span>시간 선택</span><span>이름/LINE/관심 시술</span><span>신청 완료</span><span>LINE 친구추가</span><span>리마인드</span><span>온라인 상담</span><span>예약금 안내</span></div>
+        </section>
+
+        <section class="section" id="gate">
+          <div class="section-head"><div><span class="num">08</span><h2>랜딩·게이트 구조</h2><p class="subtitle">고객이 병원 신뢰를 유지한 상태에서 이뻐 상담 Flow로 자연스럽게 이동해야 합니다.</p></div></div>
+          <div class="cards two">
+            <div class="mini-card"><span class="label">CTA Copy</span><h3>게이트 버튼 문구</h3><ul><li>일본어 온라인 상담 신청하기</li><li>이 시술에 대해 온라인 상담 받기</li><li>이 의사에게 온라인 상담 신청하기</li><li>상담 가능 시간 확인하기</li><li>온라인 상담 예약</li></ul></div>
+            <div class="mini-card"><span class="label">Landing Section</span><h3>게이트 랜딩 필수 섹션</h3><ul><li>병원명 + 일본어 온라인 상담 가능</li><li>상담 대상과 적합 고객</li><li>의료진/병원 신뢰 요소</li><li>실제 상담 가능 시간</li><li>신청 → LINE → 문진 → 상담 절차</li><li>일본어 지원/AI 통역 고지</li><li>STT·리포트·개인정보 고지</li><li>상담 가능 시간 선택 CTA</li></ul></div>
+          </div>
+          <div class="note"><strong>카피 원칙</strong>“무료 상담”만 강조하면 노쇼 리드가 늘 수 있습니다. “일본어로 상담 준비 가능”, “상담 후 결정 가능”, “상담 가능 시간 선택”처럼 안심·절차·구체성을 함께 제시해야 합니다.</div>
+        </section>
+
+        <section class="section" id="friction">
+          <div class="section-head"><div><span class="num">09</span><h2>회원가입·앱 설치 위치</h2><p class="subtitle">가입과 앱 설치는 시나리오가 아니라 전환 마찰 변수입니다. 상담 가치가 보인 뒤 요구하는 것이 유리합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>변수</th><th>유형</th><th>Flow</th><th>판단</th></tr></thead><tbody>
+            <tr><td rowspan="3">회원가입</td><td>가입 선행형</td><td>게이트 클릭 → 회원가입 → 상담 신청</td><td><span class="tag bad">1차 비추천</span> 이탈 가능성 큼</td></tr>
+            <tr><td>신청 후 가입형</td><td>상담 신청 → 회원가입/앱 설치</td><td><span class="tag amber">비교군</span> 균형형</td></tr>
+            <tr><td>상담 확정 후 가입형</td><td>신청 → 시간 선택 → LINE → 앱 설치</td><td><span class="tag good">1차 추천</span> 전환 우선</td></tr>
+            <tr><td rowspan="4">앱 설치</td><td>앱 선행형</td><td>게이트 → 앱 설치 → 신청</td><td><span class="tag bad">비추천</span> 설치 저항 큼</td></tr>
+            <tr><td>신청 후 앱형</td><td>신청 완료 → 앱 설치</td><td><span class="tag amber">현실적</span></td></tr>
+            <tr><td>상담 전 앱형</td><td>시간 선택 → LINE → 앱 문진</td><td><span class="tag good">추천</span> 상담 준비 이유 명확</td></tr>
+            <tr><td>상담 후 앱형</td><td>상담 후 리포트 확인용 앱 설치</td><td><span class="tag amber">후행 검증</span></td></tr>
+          </tbody></table></div>
+          <div class="quote">상담 내용을 정확히 전달하기 위해, 상담 전 간단한 정보를 앱에서 입력해 주세요.</div>
+        </section>
+
+        <section class="section" id="deposit">
+          <div class="section-head"><div><span class="num">10</span><h2>예약금 의향 테스트</h2><p class="subtitle">1차에서는 실제 결제 강제보다 안내 도달·결제 클릭·결제 진입을 먼저 검증합니다.</p></div></div>
+          <div class="flow"><span>온라인 상담 완료</span><span>실장 상담</span><span>상담 요약/견적 안내</span><span>예약금 목적 안내</span><span>결제하기 클릭</span><span>결제페이지 진입</span><span>실제 결제 또는 대기</span></div>
+          <div class="table-wrap"><table><thead><tr><th>단계</th><th>지표</th><th>필수 고지</th></tr></thead><tbody>
+            <tr><td>예약금 안내</td><td>예약금 안내 도달률</td><td>예약금의 목적, 수술 일정 확보 의미</td></tr>
+            <tr><td>결제 클릭</td><td>결제하기 클릭률</td><td>취소·변경·환불 가능 여부</td></tr>
+            <tr><td>결제 진입</td><td>결제페이지 진입률</td><td>병원 확인 후 일정 확정 조건</td></tr>
+            <tr><td>결제 완료</td><td>예약금 지불률</td><td>온라인 상담은 최종 진료를 대체하지 않는다는 고지</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="section" id="sop">
+          <div class="section-head"><div><span class="num">11</span><h2>운영 SOP</h2><p class="subtitle">6월의 연락두절 리스크를 줄이기 위해 신청 직후부터 상담 후 24시간까지 운영을 표준화합니다.</p></div></div>
+          <div class="cards">
+            <div class="mini-card"><span class="label">신청 직후</span><ul><li>신청 완료 메시지</li><li>LINE 친구추가 유도</li><li>상담 시간 재확인</li><li>사전 문진 안내</li></ul></div>
+            <div class="mini-card"><span class="label">상담 전</span><ul><li>D-1 리마인드</li><li>D-day 리마인드</li><li>상담 링크 발송</li><li>준비사항 안내</li></ul></div>
+            <div class="mini-card"><span class="label">상담 중</span><ul><li>출석 체크</li><li>원장 상담 진행</li><li>실장 상담 연결</li><li>STT 저장</li></ul></div>
+            <div class="mini-card"><span class="label">상담 후</span><ul><li>상담 요약 발송</li><li>리포트 생성</li><li>예약금 안내</li><li>24시간 내 후속 연락</li></ul></div>
+            <div class="mini-card"><span class="label">병원 리포트</span><ul><li>신청/참석/상담 완료수</li><li>관심 시술/예산/방한시점</li><li>예약금 후보 분류</li><li>후속 액션 제안</li></ul></div>
+            <div class="mini-card"><span class="label">실패 방지</span><ul><li>연락 가능한 LINE 확보</li><li>상담 후 즉시 실장 연결</li><li>노쇼 고객 재예약 안내</li><li>데이터 누락 체크</li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="dashboard">
+          <div class="section-head"><div><span class="num">12</span><h2>Dashboard Index</h2><p class="subtitle">일간은 운영 병목을, 주간은 시나리오별 의사결정을 보기 위한 구조로 분리합니다.</p></div></div>
+          <div class="cards two">
+            <div class="mini-card"><span class="label">Daily Dashboard</span><h3>일간 관리 지표</h3><ul><li>게이트 노출, 클릭, 클릭률</li><li>신청자 수, 신청률</li><li>슬롯 선택수, 슬롯 선택률</li><li>LINE 친구추가수, 친구확정률</li><li>앱 설치수, 문진 완료수</li><li>참석수, 참석률</li><li>연락성공수, 예약금 안내수</li></ul></div>
+            <div class="mini-card"><span class="label">Weekly Dashboard</span><h3>주간 판단 지표</h3><ul><li>게이트 위치별 신청률</li><li>메인/시술/의료진 페이지 비교</li><li>상담 완료율, 노쇼율</li><li>예약금 안내 도달률, 결제 클릭률</li><li>병원 만족도, 게이트 유지 의향</li><li>예약금 후보 고객 획득비용</li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="playbook">
+          <div class="section-head"><div><span class="num">13</span><h2>2~4주 실행계획</h2><p class="subtitle">Pretotype 기준으로 1주 설계, 2주 제작, 3주 테스트, 4주 판단 구조를 권장합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>기간</th><th>목표</th><th>업무</th><th>산출물</th></tr></thead><tbody>
+            <tr><td>Week 1</td><td>설계</td><td>참여 병원 선정, 게이트 위치 선정, CTA 문구 작성, 신청 Flow 확정, 이벤트 정의</td><td>T1/T2 병원 리스트, Gate 위치표, Funnel 설계도, Tracking Spec</td></tr>
+            <tr><td>Week 2</td><td>제작</td><td>게이트 버튼/배너 제작, 랜딩 제작, 신청폼 제작, LINE 메시지 세팅, 대시보드 세팅</td><td>게이트 이미지/HTML, 상담 신청 페이지, 신청폼, 자동응답 문구, Dashboard</td></tr>
+            <tr><td>Week 3</td><td>테스트 집행</td><td>홈페이지 반영, 전환 데이터 수집, 병목 확인, 문구/위치 보정, 실제 상담 운영 테스트</td><td>일간 리포트, 클릭/신청/슬롯/LINE 분석, 개선안</td></tr>
+            <tr><td>Week 4</td><td>판단</td><td>성과 비교, 상담 전환 분석, 예약금 의향 분석, 병원 피드백, 최종 판단</td><td>성과표, 예약금 의향 리포트, 병원 피드백, GO/FIX/STOP/SCALE Memo</td></tr>
+          </tbody></table></div>
+          <div class="checklist">
+            <div class="check">□ 병원 홈페이지에 게이트가 정상 노출되는가</div><div class="check">□ 게이트 클릭 이벤트가 수집되는가</div><div class="check">□ 신청폼 완료 데이터가 저장되는가</div><div class="check">□ LINE 친구추가가 확인되는가</div><div class="check">□ 상담 시간 선택이 가능한가</div><div class="check">□ 상담 전 리마인드가 발송되는가</div><div class="check">□ 원장/실장 상담 완료 여부가 기록되는가</div><div class="check">□ 예약금 안내 도달/클릭이 측정되는가</div>
+          </div>
+        </section>
+
+        <section class="section" id="decision">
+          <div class="section-head"><div><span class="num">14</span><h2>의사결정 기준</h2><p class="subtitle">Track 2는 클릭 여부만으로 판단하지 않고, 상담 신청·참석·예약금 의향·병원 유지 의향까지 보아야 합니다.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>판단</th><th>조건</th><th>다음 액션</th></tr></thead><tbody>
+            <tr><td>GO</td><td>게이트 클릭, 상담 신청, 시간 선택, LINE 친구확정, 실제 상담 참석, 예약금 안내/클릭, 병원 유지 의향이 확인된다.</td><td>게이트 위치 확대, 시술 페이지별 설치, 참여 병원 확장</td></tr>
+            <tr><td>FIX</td><td>클릭은 있으나 신청이 낮거나, 신청은 있으나 시간 선택·LINE·참석이 낮다. 상담은 진행되나 예약금 안내 도달이 낮다.</td><td>CTA/랜딩/폼/리마인드/SOP 수정</td></tr>
+            <tr><td>STOP</td><td>게이트 클릭이 거의 없고, 위치를 바꿔도 신청이 발생하지 않거나 병원 홈페이지 트래픽 자체가 부족하다.</td><td>게이트형 중단 또는 병원 자산/채널 재선정</td></tr>
+            <tr><td>SCALE</td><td>특정 페이지에서 높은 신청률, 슬롯 선노출 효과, 예약금 의향, 병원 유지/확대 의향이 확인된다.</td><td>복수 병원 표준 설치 패턴 개발, 월간 운영 상품화</td></tr>
+          </tbody></table></div>
+          <div class="quote">병원의 기존 신뢰와 트래픽 위에 이뻐 상담 게이트를 붙였을 때, 온라인 상담 전환 장치로 작동하는가를 검증한다.</div>
+        </section>
+
+        <footer class="footer">
+          <b>IPPEO Track 2 Gate POC Playbook</b>
+          <span>본 문서는 메디힘 이뻐 상담 게이트형 POC의 실행·측정·의사결정을 위한 내부 전략 페이지입니다.</span>
+        </footer>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
